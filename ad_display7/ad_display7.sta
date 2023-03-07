@@ -1,0 +1,48 @@
+
+ROM used: 506 (6%)
+          506 (6%) including unused fragments
+
+          1 Average locations per line
+          8 Average locations per statement
+
+RAM used: 35 (10%) at main() level
+          41 (11%) worst case
+
+Stack used: 2 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  155    66 100  ad_display7.c
+  326     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+----- -----
+  481    66 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0    169  33   1   821  4.4  RTCC_isr
+0    253  50   2   987  4.4  MAIN
+0     37   7   5   260  1.9  @DIV1616
+
+Program metrics:
+    Functions               3
+    Statements              66
+    Comments                105
+    Volume (V)              2564
+    Difficilty (D)          10.6
+    Effort to implement (E) 27186
+    Time to implement (T)   25 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   5
+    Maintainability (MI)    98
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-0002E    43  0  
+0002F-007FF   459  1542  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

@@ -1,0 +1,4 @@
+>>> Warning 202 "pwm_01.c" Line 22(16,20): Variable never used:   cont
+>>> Warning 202 "pwm_01.c" Line 23(12,17): Variable never used:   ordem
+      Memory usage:   ROM=1%      RAM=4% - 4%
+      0 Errors,  2 Warnings.

@@ -1,0 +1,56 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+020-021 ton
+022-023 toff
+024-025 cont
+026.0   ordem
+027     main.@SCRATCH1
+028     @delay_us1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+0004  @delay_us1
+0018  main
+0018  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\wende\Desktop\MICRO\pwm_dente_serra\
+
+Project Files:
+    pwm_dente_serra.c
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F628A.h
+
+Units:
+    C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      pwm_dente_serra.err
+    Ext Symbols: pwm_dente_serra.esym
+    INHX8:       pwm_dente_serra.hex
+    Symbols:     pwm_dente_serra.sym
+    List:        pwm_dente_serra.lst
+    Debug/COFF:  pwm_dente_serra.cof
+    Project:     pwm_dente_serra.PJT
+    Call Tree:   pwm_dente_serra.tre
+    Statistics:  pwm_dente_serra.sta

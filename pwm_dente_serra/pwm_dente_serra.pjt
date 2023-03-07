@@ -1,0 +1,24 @@
+[PROJECT]
+Target=C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra.hex
+Development_Mode=
+Processor_Text=PIC16F628A
+ToolSuite=CCS
+Processor=0x628A
+[C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Units]
+Link=0
+Count=1
+1=C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra
+[Opened Files]
+1=..\pwm_dente_serra\pwm_dente_serra.c
+2=

@@ -1,0 +1,28 @@
+--- Info 300 "lucio.c" Line 37(6,10): More info:   First Declaration of MAIN
+*** Error 31 "lucio.c" Line 61(1,2): Identifier is already used in this scope
+*** Error 28 "lucio.c" Line 63(30,31): Expecting an identifier
+*** Error 43 "lucio.c" Line 63(31,32): Expecting a declaration
+*** Error 28 "lucio.c" Line 64(29,30): Expecting an identifier
+*** Error 43 "lucio.c" Line 64(30,31): Expecting a declaration
+*** Error 28 "lucio.c" Line 65(26,27): Expecting an identifier
+*** Error 43 "lucio.c" Line 65(27,28): Expecting a declaration
+*** Error 28 "lucio.c" Line 66(29,30): Expecting an identifier
+*** Error 43 "lucio.c" Line 66(30,31): Expecting a declaration
+*** Error 28 "lucio.c" Line 67(31,32): Expecting an identifier
+*** Error 43 "lucio.c" Line 67(42,43): Expecting a declaration
+*** Error 43 "lucio.c" Line 67(42,43): Expecting a declaration
+*** Error 43 "lucio.c" Line 67(43,44): Expecting a declaration
+*** Error 28 "lucio.c" Line 68(29,30): Expecting an identifier
+*** Error 43 "lucio.c" Line 68(30,31): Expecting a declaration
+*** Error 28 "lucio.c" Line 69(29,30): Expecting an identifier
+*** Error 43 "lucio.c" Line 69(30,31): Expecting a declaration
+*** Error 43 "lucio.c" Line 69(31,32): Expecting a declaration
+*** Error 43 "lucio.c" Line 69(32,33): Expecting a declaration
+*** Error 43 "lucio.c" Line 69(33,34): Expecting a declaration
+*** Error 43 "lucio.c" Line 69(34,35): Expecting a declaration
+*** Error 28 "lucio.c" Line 70(32,33): Expecting an identifier
+*** Error 43 "lucio.c" Line 70(33,34): Expecting a declaration
+*** Error 28 "lucio.c" Line 71(20,21): Expecting an identifier
+*** Error 43 "lucio.c" Line 71(21,22): Expecting a declaration
+*** Error 43 "lucio.c" Line 75(1,2): Expecting a declaration
+      26 Errors,  0 Warnings.

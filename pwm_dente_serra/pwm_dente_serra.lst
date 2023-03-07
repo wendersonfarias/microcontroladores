@@ -1,0 +1,179 @@
+CCS PCM C Compiler, Version 4.104, 5967               23-fev-23 14:54
+
+               Filename: C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra.lst
+
+               ROM used: 106 words (5%)
+                         Largest free fragment is 1942
+               RAM used: 13 (6%) at main() level
+                         14 (6%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+....................  
+.................... //#include "C:\Users\wende\Desktop\MICRO\pwm_dente_serra\pwm_dente_serra.h" 
+....................  
+.................... #include <16F628A.h> 
+.................... //////// Standard Header file for the PIC16F628A device //////////////// 
+.................... #device PIC16F628A 
+.................... #list 
+....................  
+.................... #device adc=8 
+.................... #FUSES NOWDT, HS, NOPUT, NOPROTECT, NOBROWNOUT, NOLVP, NOCPD RESERVED 
+.................... #use delay(clock=4000000) 
+0004:  MOVLW  12
+0005:  SUBWF  28,F
+0006:  BTFSS  03.0
+0007:  GOTO   017
+0008:  MOVLW  28
+0009:  MOVWF  04
+000A:  BCF    03.7
+000B:  MOVLW  FC
+000C:  ANDWF  00,F
+000D:  BCF    03.0
+000E:  RRF    00,F
+000F:  RRF    00,F
+0010:  MOVF   00,W
+0011:  BTFSC  03.2
+0012:  GOTO   017
+0013:  GOTO   015
+0014:  NOP
+0015:  DECFSZ 00,F
+0016:  GOTO   014
+0017:  RETURN
+....................  
+.................... int16 ton=0, toff; 
+.................... unsigned int16 cont; 
+.................... int1 ordem = 0; //0 - crescente - 1 decrescente 
+....................  
+.................... void main() 
+.................... { 
+0018:  CLRF   04
+0019:  BCF    03.7
+001A:  MOVLW  1F
+001B:  ANDWF  03,F
+001C:  CLRF   21
+001D:  CLRF   20
+001E:  BCF    26.0
+001F:  MOVLW  07
+0020:  MOVWF  1F
+....................  
+....................    while(TRUE){ 
+....................       // 1000 us ->  
+....................        
+....................        
+....................          IF(ton == 225 && ordem ==0){  // 225us * 225 * 2 =~ 101 ms 
+0021:  MOVF   20,W
+0022:  SUBLW  E1
+0023:  BTFSS  03.2
+0024:  GOTO   02B
+0025:  MOVF   21,F
+0026:  BTFSS  03.2
+0027:  GOTO   02B
+0028:  BTFSC  26.0
+0029:  GOTO   02B
+....................             ordem = 1; 
+002A:  BSF    26.0
+....................          } 
+....................           
+....................          if(ton == 0 && ordem == 1){ 
+002B:  MOVF   20,F
+002C:  BTFSS  03.2
+002D:  GOTO   034
+002E:  MOVF   21,F
+002F:  BTFSS  03.2
+0030:  GOTO   034
+0031:  BTFSS  26.0
+0032:  GOTO   034
+....................             ordem = 0; 
+0033:  BCF    26.0
+....................          } 
+....................       
+....................           
+....................          if(ordem == 1 ){ 
+0034:  BTFSS  26.0
+0035:  GOTO   03B
+....................             ton--;  
+0036:  MOVF   20,W
+0037:  BTFSC  03.2
+0038:  DECF   21,F
+0039:  DECF   20,F
+....................          }else{ 
+003A:  GOTO   03E
+....................             ton++; 
+003B:  INCF   20,F
+003C:  BTFSC  03.2
+003D:  INCF   21,F
+....................          } 
+....................           
+....................          toff = 225-ton; 
+003E:  MOVF   20,W
+003F:  SUBLW  E1
+0040:  MOVWF  22
+0041:  CLRF   23
+0042:  MOVF   21,W
+0043:  BTFSS  03.0
+0044:  INCFSZ 21,W
+0045:  SUBWF  23,F
+....................           
+....................           
+....................          output_high(PIN_A0); 
+0046:  BSF    03.5
+0047:  BCF    05.0
+0048:  BCF    03.5
+0049:  BSF    05.0
+....................          delay_us(ton); 
+004A:  MOVF   21,W
+004B:  MOVWF  27
+004C:  INCF   27,F
+004D:  DECF   27,F
+004E:  BTFSC  03.2
+004F:  GOTO   054
+0050:  MOVLW  FF
+0051:  MOVWF  28
+0052:  CALL   004
+0053:  GOTO   04D
+0054:  MOVF   20,W
+0055:  MOVWF  28
+0056:  CALL   004
+....................          output_low(PIN_A0); 
+0057:  BSF    03.5
+0058:  BCF    05.0
+0059:  BCF    03.5
+005A:  BCF    05.0
+....................          delay_us(toff); 
+005B:  MOVF   23,W
+005C:  MOVWF  27
+005D:  INCF   27,F
+005E:  DECF   27,F
+005F:  BTFSC  03.2
+0060:  GOTO   065
+0061:  MOVLW  FF
+0062:  MOVWF  28
+0063:  CALL   004
+0064:  GOTO   05E
+0065:  MOVF   22,W
+0066:  MOVWF  28
+0067:  CALL   004
+....................           
+....................           
+....................         } 
+0068:  GOTO   021
+....................     
+....................     
+....................     
+....................     
+....................        
+....................     
+....................     
+....................     
+....................  
+....................  
+.................... } 
+0069:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F2A   HS NOWDT NOPUT NOPROTECT NOBROWNOUT MCLR NOLVP NOCPD

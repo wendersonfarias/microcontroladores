@@ -1,0 +1,3 @@
+>>> Warning 202 "pwm_dente_serra.c" Line 10(16,20): Variable never used:   cont
+      Memory usage:   ROM=5%      RAM=6% - 6%
+      0 Errors,  1 Warnings.

@@ -1,0 +1,48 @@
+
+ROM used: 287 (4%)
+          287 (4%) including unused fragments
+
+          1 Average locations per line
+          11 Average locations per statement
+
+RAM used: 15 (4%) at main() level
+          20 (5%) worst case
+
+Stack used: 2 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   77    26 100  dente_serra.c
+  326     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+----- -----
+  403    26 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     79  28   2   165  3.6  TIMER1_isr
+0     37  13   5   455  2.9  @DIV1616
+0    122  43   0   455  2.9  MAIN
+
+Program metrics:
+    Functions               3
+    Statements              26
+    Comments                81
+    Volume (V)              1374
+    Difficilty (D)          9.4
+    Effort to implement (E) 12920
+    Time to implement (T)   12 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    153
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00030    45  0  
+00031-007FF   238  1761  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

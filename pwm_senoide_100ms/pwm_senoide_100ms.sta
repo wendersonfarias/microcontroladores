@@ -1,0 +1,49 @@
+
+ROM used: 256 (3%)
+          256 (3%) including unused fragments
+
+          1 Average locations per line
+          12 Average locations per statement
+
+RAM used: 16 (4%) at main() level
+          16 (4%) worst case
+
+Stack used: 2 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   47    22 100  pwm_senoide_100ms.c
+   17     0   0  pwm_senoide_100ms.h
+  326     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+----- -----
+  390    22 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     84  33   0   285  2.3  @const69
+0     22   9   0   189  4.5  RTCC_isr
+0    103  40   0   336  2.3  MAIN
+
+Program metrics:
+    Functions               3
+    Statements              22
+    Comments                76
+    Volume (V)              1059
+    Difficilty (D)          9.3
+    Effort to implement (E) 9802
+    Time to implement (T)   9 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    158
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-0002E    43  0  
+0002F-007FF   209  1792  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

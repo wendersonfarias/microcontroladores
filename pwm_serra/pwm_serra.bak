@@ -1,0 +1,40 @@
+#include "C:\Users\wende\Desktop\MICRO\pwm_serra\pwm_serra.h"
+int16 cont=0;
+
+#int_TIMER1
+void  TIMER1_isr(void) 
+{
+   if(cont> 100){
+      cont = 0;
+   }
+   
+   cont = cont + 1;
+   
+   set_pwm2_duty(cont);
+   
+   output_toggle(PIN_D2);
+   
+}
+
+
+
+void main()
+{
+
+   setup_adc_ports(NO_ANALOGS);
+   setup_adc(ADC_CLOCK_DIV_2);
+   setup_psp(PSP_DISABLED);
+   setup_spi(SPI_SS_DISABLED);
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1);
+   setup_timer_1(T1_INTERNAL|T1_DIV_BY_8);
+   setup_timer_2(T2_DIV_BY_4,249,1);
+   setup_ccp2(CCP_PWM);
+   set_pwm2_duty(20);
+   setup_comparator(NC_NC_NC_NC);
+   setup_vref(FALSE);
+   enable_interrupts(INT_TIMER1);
+   enable_interrupts(GLOBAL);
+
+   // TODO: USER CODE!!
+
+}

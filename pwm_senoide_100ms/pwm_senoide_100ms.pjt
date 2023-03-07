@@ -1,0 +1,25 @@
+[PROJECT]
+Target=C:\Users\wende\Desktop\MICRO\pwm_senoide_100ms\pwm_senoide_100ms.hex
+Development_Mode=
+Processor_Text=PIC16F877A
+ToolSuite=CCS
+Processor=0x877A
+[C:\Users\wende\Desktop\MICRO\pwm_senoide_100ms\pwm_senoide_100ms]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=C:\Users\wende\Desktop\MICRO\pwm_senoide_100ms\pwm_senoide_100ms.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Units]
+Link=0
+Count=1
+1=C:\Users\wende\Desktop\MICRO\pwm_senoide_100ms\pwm_senoide_100ms
+[Opened Files]
+1=..\pwm_senoide_100ms\pwm_senoide_100ms.c
+2=
+3=
