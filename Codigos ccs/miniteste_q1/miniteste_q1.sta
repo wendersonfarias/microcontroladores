@@ -1,0 +1,67 @@
+
+ROM used: 1289 (16%)
+          1289 (16%) including unused fragments
+
+          2 Average locations per line
+          13 Average locations per statement
+
+RAM used: 15 (4%) at main() level
+          37 (10%) worst case
+
+Stack used: 4 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   75    30  29  miniteste_q1.c
+  326     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+  165    72  71  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\mod_lcd.c
+----- -----
+  566   102 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   2   1             @delay_ms1
+0      8   1   0   260  1.9  @const66
+0     39   3   1   260  1.9  lcd_envia_nibble
+0     33   3   3   176  2.7  lcd_envia_byte
+0     61   5   2   433  4.3  lcd_ini
+ Inline        4   186  5.5  lcd_pos_xy
+0     56   4   1   290  4.1  lcd_escreve
+0    230  18   9   936  6.1  MAIN
+0     31   2   2             @ITOF
+0    117   9  13             @MULFF
+0    204  16  14             @DIVFF
+0      6   0   0             @const100
+0     70   5   3             @PSTRINGC7_81
+0      7   1   0             @const102
+0      5   0   0             @const103
+0      7   1   0             @const104
+0     80   6   4             @PSTRINGCN7_81
+ Inline        5             @FTOSD
+0     66   5  13             @DIV3232
+0    233  18  13             @PRINTF_L32D_81FPFPF
+0      5   0   0             @const115
+0      7   1   0             @const116
+
+Program metrics:
+    Functions               7
+    Statements              102
+    Comments                123
+    Volume (V)              3793
+    Difficilty (D)          24.7
+    Effort to implement (E) 93593
+    Time to implement (T)   1 hours, 27 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   11
+    Maintainability (MI)    105
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF  1285  759  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

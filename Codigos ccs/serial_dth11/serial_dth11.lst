@@ -1,0 +1,548 @@
+CCS PCM C Compiler, Version 4.104, 5967               14-mar-23 01:36
+
+               Filename: C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\serial_dth11\serial_dth11.lst
+
+               ROM used: 575 words (7%)
+                         Largest free fragment is 2048
+               RAM used: 19 (5%) at main() level
+                         23 (6%) worst case
+               Stack:    2 locations
+
+*
+0000:  MOVLW  01
+0001:  MOVWF  0A
+0002:  GOTO   144
+0003:  NOP
+.................... //#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\serial_dth11\serial_dth11.h" 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #device adc=8 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES HS                       //High speed Osc (> 4mhz for PCM/PCH) (>10mhz for PCD) 
+.................... #FUSES NOPUT                    //No Power Up Timer 
+.................... #FUSES NOPROTECT                //Code not protected from reading 
+.................... #FUSES NODEBUG                  //No Debug mode for ICD 
+.................... #FUSES NOBROWNOUT               //No brownout rese 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOCPD                    //No EE protection 
+.................... #FUSES NOWRT                    //Program memory not write protected 
+.................... #FUSES RESERVED                 //Used to set the reserved FUSE bits 
+....................  
+.................... #use delay(clock=20000000) 
+*
+001A:  MOVLW  2E
+001B:  MOVWF  04
+001C:  BCF    03.7
+001D:  MOVF   00,W
+001E:  BTFSC  03.2
+001F:  GOTO   02D
+0020:  MOVLW  06
+0021:  MOVWF  78
+0022:  CLRF   77
+0023:  DECFSZ 77,F
+0024:  GOTO   023
+0025:  DECFSZ 78,F
+0026:  GOTO   022
+0027:  MOVLW  7B
+0028:  MOVWF  77
+0029:  DECFSZ 77,F
+002A:  GOTO   029
+002B:  DECFSZ 00,F
+002C:  GOTO   020
+002D:  RETURN
+.................... #use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=serial_pc) 
+....................  
+.................... #use fast_io(B) 
+.................... #define DHT11_PIN PIN_B4    // connection pin between DHT11 and mcu 
+....................  
+.................... //variaveis 
+.................... short Time_out; 
+.................... unsigned int8 T_byte1, T_byte2, Hu_byte1, Hu_byte2, testaSoma ; 
+....................  
+.................... void start_sinal(){ 
+....................   output_drive(DHT11_PIN);    // Define o pino especificado para o modo de saída. 
+002E:  BSF    03.5
+002F:  BCF    06.4
+....................   output_low(DHT11_PIN);      // saída do pino como baixo 
+0030:  BCF    03.5
+0031:  BCF    06.4
+....................   delay_ms(25); 
+0032:  MOVLW  19
+0033:  MOVWF  2E
+0034:  CALL   01A
+....................   output_high(DHT11_PIN);     // saída do pino como baixo 
+0035:  BSF    06.4
+....................   delay_us(30); 
+0036:  MOVLW  31
+0037:  MOVWF  77
+0038:  DECFSZ 77,F
+0039:  GOTO   038
+003A:  GOTO   03B
+....................   output_float(DHT11_PIN);    // configurar pino de conexão como entrada 
+003B:  BSF    03.5
+003C:  BSF    06.4
+.................... } 
+003D:  BCF    03.5
+003E:  BCF    0A.3
+003F:  BCF    0A.4
+0040:  GOTO   19C (RETURN)
+....................  
+.................... short testa_resposta(){ 
+....................   delay_us(40); 
+0041:  MOVLW  42
+0042:  MOVWF  77
+0043:  DECFSZ 77,F
+0044:  GOTO   043
+0045:  NOP
+....................   if(!input(DHT11_PIN)){      // leia e teste se o pino de conexão está baixo 
+0046:  BTFSC  06.4
+0047:  GOTO   055
+....................     delay_us(80); 
+0048:  MOVLW  85
+0049:  MOVWF  77
+004A:  DECFSZ 77,F
+004B:  GOTO   04A
+....................     if(input(DHT11_PIN)){     // leia e teste se o pino de conexão está alto 
+004C:  BTFSS  06.4
+004D:  GOTO   055
+....................       delay_us(50); 
+004E:  MOVLW  53
+004F:  MOVWF  77
+0050:  DECFSZ 77,F
+0051:  GOTO   050
+....................       return 1; 
+0052:  MOVLW  01
+0053:  MOVWF  78
+0054:  GOTO   055
+....................     } 
+....................   } 
+.................... } 
+0055:  BCF    0A.3
+0056:  BCF    0A.4
+0057:  GOTO   19D (RETURN)
+....................  
+.................... unsigned int8 leitor_dados(){ 
+0058:  CLRF   2F
+....................   unsigned int8 i, cont, _data = 0;   // cont usando para contar duracao do bit 1 
+....................   if(Time_out) 
+0059:  BTFSS  20.0
+005A:  GOTO   05B
+....................     break; 
+....................   for(i = 0; i < 8; i++){ 
+005B:  CLRF   2D
+005C:  MOVF   2D,W
+005D:  SUBLW  07
+005E:  BTFSS  03.0
+005F:  GOTO   0A4
+....................           cont = 0; 
+0060:  CLRF   2E
+....................           while(!input(DHT11_PIN)){           // aguardando o pino ser nivel alto 
+0061:  BTFSC  06.4
+0062:  GOTO   06E
+....................             cont++; 
+0063:  INCF   2E,F
+....................             if(cont> 100){ 
+0064:  MOVF   2E,W
+0065:  SUBLW  64
+0066:  BTFSC  03.0
+0067:  GOTO   06A
+....................               Time_out = 1; 
+0068:  BSF    20.0
+....................               break; 
+0069:  GOTO   06E
+....................             } 
+....................             delay_us(1); 
+006A:  GOTO   06B
+006B:  GOTO   06C
+006C:  NOP
+....................           } 
+006D:  GOTO   061
+....................           delay_us(30); 
+006E:  MOVLW  31
+006F:  MOVWF  77
+0070:  DECFSZ 77,F
+0071:  GOTO   070
+0072:  GOTO   073
+....................           if(!input(DHT11_PIN)) 
+0073:  BTFSC  06.4
+0074:  GOTO   086
+....................             bit_clear(_data, (7 - i));        // limpa bit (7 - i) 
+0075:  MOVF   2D,W
+0076:  SUBLW  07
+0077:  MOVWF  30
+0078:  MOVLW  01
+0079:  MOVWF  77
+007A:  MOVF   30,W
+007B:  MOVWF  78
+007C:  BTFSC  03.2
+007D:  GOTO   082
+007E:  BCF    03.0
+007F:  RLF    77,F
+0080:  DECFSZ 78,F
+0081:  GOTO   07E
+0082:  MOVF   77,W
+0083:  XORLW  FF
+0084:  ANDWF  2F,F
+....................           else{ 
+0085:  GOTO   0A2
+....................             bit_set(_data, (7 - i));          // Seta bit (7 - i) 
+0086:  MOVF   2D,W
+0087:  SUBLW  07
+0088:  MOVWF  30
+0089:  MOVLW  01
+008A:  MOVWF  77
+008B:  MOVF   30,W
+008C:  MOVWF  78
+008D:  BTFSC  03.2
+008E:  GOTO   093
+008F:  BCF    03.0
+0090:  RLF    77,F
+0091:  DECFSZ 78,F
+0092:  GOTO   08F
+0093:  MOVF   77,W
+0094:  IORWF  2F,F
+....................             while(input(DHT11_PIN)){          // Aguarde até que o pino DHT11 fique baixo 
+0095:  BTFSS  06.4
+0096:  GOTO   0A2
+....................               cont++; 
+0097:  INCF   2E,F
+....................               if(cont > 100){ 
+0098:  MOVF   2E,W
+0099:  SUBLW  64
+009A:  BTFSC  03.0
+009B:  GOTO   09E
+....................               Time_out = 1; 
+009C:  BSF    20.0
+....................               break; 
+009D:  GOTO   0A2
+....................             } 
+....................             delay_us(1);} 
+009E:  GOTO   09F
+009F:  GOTO   0A0
+00A0:  NOP
+00A1:  GOTO   095
+....................     } 
+....................   } 
+00A2:  INCF   2D,F
+00A3:  GOTO   05C
+....................   return _data; 
+00A4:  MOVF   2F,W
+00A5:  MOVWF  78
+.................... } 
+00A6:  RETURN
+....................  
+.................... void main() 
+.................... { 
+*
+0144:  CLRF   04
+0145:  BCF    03.7
+0146:  MOVLW  1F
+0147:  ANDWF  03,F
+0148:  MOVLW  81
+0149:  BSF    03.5
+014A:  MOVWF  19
+014B:  MOVLW  A6
+014C:  MOVWF  18
+014D:  MOVLW  90
+014E:  BCF    03.5
+014F:  MOVWF  18
+0150:  BSF    03.5
+0151:  BSF    1F.0
+0152:  BSF    1F.1
+0153:  BSF    1F.2
+0154:  BCF    1F.3
+0155:  MOVLW  07
+0156:  MOVWF  1C
+....................    int t1,t2,t3; 
+....................    int h1,h2,h3; 
+....................  
+....................    //port_b_pullups(TRUE); 
+....................    setup_adc_ports(NO_ANALOGS); 
+*
+015A:  BSF    03.5
+015B:  BSF    1F.0
+015C:  BSF    1F.1
+015D:  BSF    1F.2
+015E:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_DIV_2); 
+015F:  BCF    1F.6
+0160:  BCF    03.5
+0161:  BCF    1F.6
+0162:  BCF    1F.7
+0163:  BSF    03.5
+0164:  BCF    1F.7
+0165:  BCF    03.5
+0166:  BSF    1F.0
+....................    setup_psp(PSP_DISABLED); 
+0167:  BSF    03.5
+0168:  BCF    09.4
+....................    setup_spi(SPI_SS_DISABLED); 
+0169:  BCF    03.5
+016A:  BCF    14.5
+016B:  BCF    26.5
+016C:  MOVF   26,W
+016D:  BSF    03.5
+016E:  MOVWF  07
+016F:  BCF    03.5
+0170:  BSF    26.4
+0171:  MOVF   26,W
+0172:  BSF    03.5
+0173:  MOVWF  07
+0174:  BCF    03.5
+0175:  BCF    26.3
+0176:  MOVF   26,W
+0177:  BSF    03.5
+0178:  MOVWF  07
+0179:  MOVLW  01
+017A:  BCF    03.5
+017B:  MOVWF  14
+017C:  MOVLW  00
+017D:  BSF    03.5
+017E:  MOVWF  14
+....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1); 
+017F:  MOVF   01,W
+0180:  ANDLW  C7
+0181:  IORLW  08
+0182:  MOVWF  01
+....................    setup_timer_1(T1_DISABLED); 
+0183:  BCF    03.5
+0184:  CLRF   10
+....................    setup_timer_2(T2_DISABLED,0,1); 
+0185:  MOVLW  00
+0186:  MOVWF  78
+0187:  MOVWF  12
+0188:  MOVLW  00
+0189:  BSF    03.5
+018A:  MOVWF  12
+....................    setup_comparator(NC_NC_NC_NC); 
+018B:  MOVLW  07
+018C:  MOVWF  1C
+018D:  MOVF   05,W
+018E:  MOVWF  05
+018F:  MOVLW  10
+0190:  MOVWF  77
+0191:  DECFSZ 77,F
+0192:  GOTO   191
+0193:  NOP
+0194:  MOVF   1C,W
+0195:  BCF    03.5
+0196:  BCF    0D.6
+....................    setup_vref(FALSE); 
+0197:  BSF    03.5
+0198:  CLRF   1D
+....................  
+....................    while(TRUE){ 
+....................       Time_out = 0; 
+0199:  BCF    03.5
+019A:  BCF    20.0
+....................       start_sinal(); 
+019B:  GOTO   02E
+....................        
+....................       if(testa_resposta()){                     // If there is a response from sensor 
+019C:  GOTO   041
+019D:  MOVF   78,F
+019E:  BTFSC  03.2
+019F:  GOTO   236
+....................       Hu_byte1 =  leitor_dados();                 // read RH byte1 
+01A0:  CALL   058
+01A1:  MOVF   78,W
+01A2:  MOVWF  23
+....................       Hu_byte2 =  leitor_dados();                 // read RH byte2 
+01A3:  CALL   058
+01A4:  MOVF   78,W
+01A5:  MOVWF  24
+....................       T_byte1 =   leitor_dados();                  // read T byte1 
+01A6:  CALL   058
+01A7:  MOVF   78,W
+01A8:  MOVWF  21
+....................       T_byte2 =   leitor_dados();                  // read T byte2 
+01A9:  CALL   058
+01AA:  MOVF   78,W
+01AB:  MOVWF  22
+....................       testaSoma =  leitor_dados();                 // read checksum 
+01AC:  CALL   058
+01AD:  MOVF   78,W
+01AE:  MOVWF  25
+....................       if(Time_out){                           // Se a leitura demorar muito 
+01AF:  BTFSC  20.0
+....................                               
+....................         //fprintf(serial_pc, "Time out! \n\t"); 
+....................       }else{ 
+01B0:  GOTO   235
+....................          if(testaSoma == ((Hu_Byte1 + Hu_Byte2 + T_Byte1 + T_Byte2) & 0xFF)){ 
+01B1:  MOVF   24,W
+01B2:  ADDWF  23,W
+01B3:  ADDWF  21,W
+01B4:  ADDWF  22,W
+01B5:  SUBWF  25,W
+01B6:  BTFSS  03.2
+01B7:  GOTO   235
+....................             t1 = T_Byte1/10  ; 
+01B8:  MOVF   21,W
+01B9:  MOVWF  2F
+01BA:  MOVLW  0A
+01BB:  MOVWF  30
+01BC:  CALL   0A7
+01BD:  MOVF   78,W
+01BE:  MOVWF  27
+....................             t2 = T_Byte1%10  ; 
+01BF:  MOVF   21,W
+01C0:  MOVWF  2F
+01C1:  MOVLW  0A
+01C2:  MOVWF  30
+01C3:  CALL   0A7
+01C4:  MOVF   77,W
+01C5:  MOVWF  28
+....................             t3 = T_Byte2/10  ; 
+01C6:  MOVF   22,W
+01C7:  MOVWF  2F
+01C8:  MOVLW  0A
+01C9:  MOVWF  30
+01CA:  CALL   0A7
+01CB:  MOVF   78,W
+01CC:  MOVWF  29
+....................             h1 = Hu_Byte1/10 ; 
+01CD:  MOVF   23,W
+01CE:  MOVWF  2F
+01CF:  MOVLW  0A
+01D0:  MOVWF  30
+01D1:  CALL   0A7
+01D2:  MOVF   78,W
+01D3:  MOVWF  2A
+....................             h2 = Hu_Byte1%10 ; 
+01D4:  MOVF   23,W
+01D5:  MOVWF  2F
+01D6:  MOVLW  0A
+01D7:  MOVWF  30
+01D8:  CALL   0A7
+01D9:  MOVF   77,W
+01DA:  MOVWF  2B
+....................             h3 = Hu_Byte2/10 ; 
+01DB:  MOVF   24,W
+01DC:  MOVWF  2F
+01DD:  MOVLW  0A
+01DE:  MOVWF  30
+01DF:  CALL   0A7
+01E0:  MOVF   78,W
+01E1:  MOVWF  2C
+....................             fprintf(serial_pc, "temperatura %u%u.%u \n\t", t1, t2,t3);   
+01E2:  MOVLW  04
+01E3:  BSF    03.6
+01E4:  MOVWF  0D
+01E5:  MOVLW  00
+01E6:  MOVWF  0F
+01E7:  BCF    03.0
+01E8:  MOVLW  0C
+01E9:  BCF    03.6
+01EA:  MOVWF  2D
+01EB:  CALL   0BC
+01EC:  MOVF   27,W
+01ED:  MOVWF  2D
+01EE:  MOVLW  1B
+01EF:  MOVWF  2E
+01F0:  CALL   10C
+01F1:  MOVF   28,W
+01F2:  MOVWF  2D
+01F3:  MOVLW  1B
+01F4:  MOVWF  2E
+01F5:  CALL   10C
+01F6:  MOVLW  2E
+01F7:  BTFSS  0C.4
+01F8:  GOTO   1F7
+01F9:  MOVWF  19
+01FA:  MOVF   29,W
+01FB:  MOVWF  2D
+01FC:  MOVLW  1B
+01FD:  MOVWF  2E
+01FE:  CALL   10C
+01FF:  MOVLW  20
+0200:  BTFSS  0C.4
+0201:  GOTO   200
+0202:  MOVWF  19
+0203:  MOVLW  0A
+0204:  BTFSS  0C.4
+0205:  GOTO   204
+0206:  MOVWF  19
+0207:  MOVLW  09
+0208:  BTFSS  0C.4
+0209:  GOTO   208
+020A:  MOVWF  19
+....................             fprintf(serial_pc, "humidade %u%u.%u \n\t", h1, h2,h3); 
+020B:  MOVLW  10
+020C:  BSF    03.6
+020D:  MOVWF  0D
+020E:  MOVLW  00
+020F:  MOVWF  0F
+0210:  BCF    03.0
+0211:  MOVLW  09
+0212:  BCF    03.6
+0213:  MOVWF  2D
+0214:  CALL   0BC
+0215:  MOVF   2A,W
+0216:  MOVWF  2D
+0217:  MOVLW  1B
+0218:  MOVWF  2E
+0219:  CALL   10C
+021A:  MOVF   2B,W
+021B:  MOVWF  2D
+021C:  MOVLW  1B
+021D:  MOVWF  2E
+021E:  CALL   10C
+021F:  MOVLW  2E
+0220:  BTFSS  0C.4
+0221:  GOTO   220
+0222:  MOVWF  19
+0223:  MOVF   2C,W
+0224:  MOVWF  2D
+0225:  MOVLW  1B
+0226:  MOVWF  2E
+0227:  CALL   10C
+0228:  MOVLW  20
+0229:  BTFSS  0C.4
+022A:  GOTO   229
+022B:  MOVWF  19
+022C:  MOVLW  0A
+022D:  BTFSS  0C.4
+022E:  GOTO   22D
+022F:  MOVWF  19
+0230:  MOVLW  09
+0231:  BTFSS  0C.4
+0232:  GOTO   231
+0233:  MOVWF  19
+....................          } 
+....................          else{ 
+0234:  GOTO   235
+....................              
+....................             //fprintf(serial_pc, "Checksum Error! \n\t"); 
+....................          } 
+....................       } 
+....................    } 
+....................    else { 
+0235:  GOTO   236
+....................       //lcd_putc('\f');                          // LCD clear 
+....................       //lcd_gotoxy(3, 1);                        // Go to column 3 row 1 
+....................       //lcd_putc("No response"); 
+....................       //lcd_gotoxy(1, 2);                        // Go to column 1 row 2 
+....................       //lcd_putc("from the sensor"); 
+....................     } 
+....................      
+....................     
+....................     delay_ms(1500); 
+0236:  MOVLW  06
+0237:  MOVWF  2D
+0238:  MOVLW  FA
+0239:  MOVWF  2E
+023A:  CALL   01A
+023B:  DECFSZ 2D,F
+023C:  GOTO   238
+....................    } 
+023D:  GOTO   19A
+.................... } 
+023E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT
