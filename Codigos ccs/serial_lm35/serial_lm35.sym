@@ -7,19 +7,17 @@
 01B     CCP_2_LOW
 01B     CCP_2
 01C     CCP_2_HIGH
-020     @TRIS_C
 021-022 main.leitura
 023-02D main.possiveisValores
 02E     main.maior
 02F     main.cont
 030     main.temperaturaBruta
-031     @delay_ms1.P1
-031     @PRINTF_U_66.P2
+031     @PRINTF_U_1200_62_63.P1
+031     @delay_ms1.P2
 031     main.@SCRATCH1
-032     @PRINTF_U_66.P1
+032     @PRINTF_U_1200_62_63.P1
 032     main.@SCRATCH2
-033     @PUTCHAR_1_.P1
-033     @DIV88.P2
+033     @DIV88.P1
 034     @DIV88.P1
 035     @DIV88.@SCRATCH1
 077     @SCRATCH
@@ -29,16 +27,15 @@
 07A     @SCRATCH
 09C.6   C1OUT
 09C.7   C2OUT
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 
 ROM Allocation:
 0004  @delay_ms1
-002D  @PUTCHAR_1_
-008D  main
-0018  @DIV88
-0056  @PRINTF_U_66
-008D  @cinit
+0069  main
+001A  @DIV88
+002F  @PRINTF_U_1200_62_63
+0069  @cinit
 
 
 User Memory space: 

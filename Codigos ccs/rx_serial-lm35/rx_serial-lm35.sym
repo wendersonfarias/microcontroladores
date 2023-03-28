@@ -1,5 +1,5 @@
-004-005 @READ_PROGRAM_MEMORY8.P1
-004     @WRITE_PROGRAM_MEMORY8.P2
+004     @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
 008     PSP_DATA
 015     CCP_1_LOW
 015     CCP_1
@@ -14,8 +14,22 @@
 024     @INTERRUPT_AREA
 025     @INTERRUPT_AREA
 026     @INTERRUPT_AREA
-027     @TRIS_C
-028     RDA_isr.@SCRATCH1
+027.0   flagI
+027.1   flagF
+027.2   flagM
+027.3   flagT
+028     valor
+029     recebido
+02A     @TRIS_C
+02B     @PRINTF_U_1200_62_63.P1
+02C     @PRINTF_U_1200_62_63.P1
+02D     @DIV88.P1
+02E     @DIV88.P1
+02F     @DIV88.@SCRATCH1
+030     RDA_isr.@SCRATCH1
+031     RDA_isr.@SCRATCH2
+032     RDA_isr.@SCRATCH3
+033     RDA_isr.@SCRATCH4
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -25,8 +39,8 @@
 09C.6   C1OUT
 09C.7   C2OUT
 0FF     @INTERRUPT_AREA
-10D-10E @READ_PROGRAM_MEMORY8.P1
-10D-10E @WRITE_PROGRAM_MEMORY8.P2
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
 17F     @INTERRUPT_AREA
 1FF     @INTERRUPT_AREA
 27F     @INTERRUPT_AREA
@@ -60,8 +74,10 @@ FFF     @INTERRUPT_AREA
 
 ROM Allocation:
 0031  RDA_isr
-003B  MAIN
-003B  @cinit
+00AF  MAIN
+0060  @DIV88
+0075  @PRINTF_U_1200_62_63
+00AF  @cinit
 
 
 User Memory space: 
@@ -69,14 +85,14 @@ User Memory space:
 User Memory space: 
 
 Project Directory:
-    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial_lm35\
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial-lm35\
 
 Project Files:
-    rx_serial_lm35.c
+    rx_serial-lm35.c
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
 
 Units:
-    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial_lm35\rx_serial_lm35 (main)
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial-lm35\rx_serial-lm35 (main)
 
 Compiler Settings:
     Processor:      PIC16F877A
@@ -87,12 +103,12 @@ Compiler Settings:
     Float,Double:   32,32
 
 Output Files:
-    Errors:      rx_serial_lm35.err
-    Ext Symbols: rx_serial_lm35.esym
-    INHX8:       rx_serial_lm35.hex
-    Symbols:     rx_serial_lm35.sym
-    List:        rx_serial_lm35.lst
-    Debug/COFF:  rx_serial_lm35.cof
-    Project:     rx_serial_lm35.PJT
-    Call Tree:   rx_serial_lm35.tre
-    Statistics:  rx_serial_lm35.sta
+    Errors:      rx_serial-lm35.err
+    Ext Symbols: rx_serial-lm35.esym
+    INHX8:       rx_serial-lm35.hex
+    Symbols:     rx_serial-lm35.sym
+    List:        rx_serial-lm35.lst
+    Debug/COFF:  rx_serial-lm35.cof
+    Project:     rx_serial-lm35.PJT
+    Call Tree:   rx_serial-lm35.tre
+    Statistics:  rx_serial-lm35.sta

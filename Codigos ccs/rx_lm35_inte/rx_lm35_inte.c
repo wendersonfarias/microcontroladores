@@ -1,4 +1,4 @@
-//#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial_lm35\rx_serial_lm35.h"
+//#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_lm35_inte\rx_lm35_inte.h"
 #include <16F877A.h>
 #device adc=8
 
@@ -14,18 +14,12 @@
 #FUSES RESERVED                 //Used to set the reserved FUSE bits
 
 #use delay(clock=20000000)
-#use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=lm35)
+#use rs232(baud=1200,parity=N,xmit=PIN_D0,rcv=PIN_C7,bits=8,stream=lm35)
+#use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_D1,bits=8,stream=plotter)
+
+int value = 0;
 
 
-
-
-#int_RDA
-void  RDA_isr(void) 
-{
-   putc(getc());
-   
-
-}
 
 
 
@@ -41,9 +35,12 @@ void main()
    setup_timer_2(T2_DISABLED,0,1);
    setup_comparator(NC_NC_NC_NC);
    setup_vref(FALSE);
-   enable_interrupts(INT_RDA);
-   enable_interrupts(GLOBAL);
 
-   while(TRUE);
+
+   while(TRUE){
+       value = fgetc(lm35);
+       fprintf(plotter, "%u\n", value);
+       delay_ms(50);
+   }
 
 }

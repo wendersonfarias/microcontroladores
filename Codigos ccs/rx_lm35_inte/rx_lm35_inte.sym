@@ -1,0 +1,71 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004     @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021     value
+022     @PRINTF_U_72.P1
+022     @delay_ms1.P2
+022     @GETCH_1_.@SCRATCH1
+023     @PRINTF_U_72.P1
+024     @PUTCHAR_2_.P1
+024     @DIV88.P2
+025     @DIV88.P1
+026     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+00B2  @delay_ms1
+0004  @GETCH_1_
+0050  @PUTCHAR_2_
+00C8  main
+003B  @DIV88
+007B  @PRINTF_U_72
+00C8  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_lm35_inte\
+
+Project Files:
+    rx_lm35_inte.c
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+
+Units:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_lm35_inte\rx_lm35_inte (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      rx_lm35_inte.err
+    Ext Symbols: rx_lm35_inte.esym
+    INHX8:       rx_lm35_inte.hex
+    Symbols:     rx_lm35_inte.sym
+    List:        rx_lm35_inte.lst
+    Debug/COFF:  rx_lm35_inte.cof
+    Project:     rx_lm35_inte.PJT
+    Call Tree:   rx_lm35_inte.tre
+    Statistics:  rx_lm35_inte.sta

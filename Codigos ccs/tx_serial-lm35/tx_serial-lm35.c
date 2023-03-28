@@ -1,6 +1,6 @@
-//#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\serial_lm35\serial_lm35.h"
-#include <16F877A.h>
+//#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\tx_serial-lm35\tx_serial-lm35.h"
 
+#include <16F877A.h>
 #device adc=10
 
 #FUSES NOWDT                    //No Watch Dog Timer
@@ -18,60 +18,45 @@
 #use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=leitura_lm35)
 
 
-
 void main()
 {
    int16 leitura;
+   int parteAlta;
+   int parteBaixa;
+   int valor;
+ 
    
-   int8 possiveisValores[11];
-   int maior ;
-   int cont;
-   int temperaturaBruta=0;
-   
-
-
-   
-   setup_adc(ADC_CLOCK_DIV_16);
+    setup_adc(ADC_CLOCK_DIV_16);
    setup_adc_ports(AN0);
  
    set_adc_channel(0);
    delay_us(20);
 
-   
    while(TRUE){
-      maior = 0;
-      for(cont = 0; cont <= 10; cont++){
-         leitura = read_adc();
-         delay_ms(1);
-         if(leitura<= 255){
-             possiveisValores[cont] = (int8)leitura;
-         }
-         else{
-             possiveisValores[cont] = 255;
-         }
+      leitura = read_adc();
       
+      if(leitura > 255){
+         valor = 255;
+      }else {
+         valor = (int8) leitura;
       }
       
-       for(cont = 0; cont <= 10; cont++){
-         if(maior < possiveisValores[cont]) {
-            maior = possiveisValores[cont];
-         }
+      parteBaixa =  make8(leitura,0);
+      parteAlta =  make8(leitura,1);
       
-      }
+     
       
-      temperaturaBruta = maior;
+     putc('i');
+     delay_ms(100);
+     putc('f');
+     delay_ms(100);
+     putc('m');
+     delay_ms(100);
+     putc('t');
+     delay_ms(100);
+     putc(valor);
+     delay_ms(100);
       
-      delay_ms(20);
-      
-      fprintf(leitura_lm35, "%u", temperaturaBruta);
-      
-      
-      
-   
    }
 
 }
-
-
-
-

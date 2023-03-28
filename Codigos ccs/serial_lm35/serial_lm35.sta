@@ -1,12 +1,12 @@
 
-ROM used: 261 (3%)
-          261 (3%) including unused fragments
+ROM used: 223 (3%)
+          223 (3%) including unused fragments
 
           1 Average locations per line
-          11 Average locations per statement
+          9 Average locations per statement
 
-RAM used: 24 (7%) at main() level
-          27 (7%) worst case
+RAM used: 23 (6%) at main() level
+          26 (7%) worst case
 
 Stack used: 2 worst case (out of 8 total available)
 
@@ -19,19 +19,18 @@ Lines Stmts  %   Files
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     20   8   1             @delay_ms1
-0     41  16   1             @PUTCHAR_1_
-0    120  46  18   814  6.6  main
-0     21   8   3             @DIV88
-0     55  21   2             @PRINTF_U_66
+0     22  10   1             @delay_ms1
+0    118  53  18   814  6.6  main
+0     21   9   3             @DIV88
+0     58  26   2             @PRINTF_U_1200_62_63
 
 Program metrics:
     Functions               1
     Statements              24
     Comments                77
-    Volume (V)              825
-    Difficilty (D)          6.2
-    Effort to implement (E) 5105
+    Volume (V)              822
+    Difficilty (D)          6.3
+    Effort to implement (E) 5172
     Time to implement (T)   5 minutes
     Est Delivered Bugs (B)  0
     Cyclomatic Complexity   4
@@ -40,7 +39,7 @@ Program metrics:
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-007FF   257  1787  
+00004-007FF   219  1825  
 00800-00FFF     0  2048  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  

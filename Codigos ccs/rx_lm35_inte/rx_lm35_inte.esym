@@ -1,7 +1,7 @@
-D G "__PCM__" 0 0 ""4.104""
-D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""28-mar-23""
-D G "__TIME__" 0 0 ""00:18:05"" "#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\serial_lm35\serial_lm35.h""
+D G "__PCM__" 0 48 ""4.104""
+D G "__DEVICE__" 0 48 "877"
+D G "__DATE__" 0 48 ""23-mar-23""
+D G "__TIME__" 0 48 ""01:34:27"" "#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_lm35_inte\rx_lm35_inte.h""
 d G "PIN_A0" 1 19 "40"
 d G "PIN_A1" 1 20 "41"
 d G "PIN_A2" 1 21 "42"
@@ -200,12 +200,8 @@ d G "INT_BUSCOL" 1 320 "0x008D08"
 d G "INT_EEPROM" 1 321 "0x008D10"
 d G "INT_TIMER0" 1 322 "0x000B20"
 d G "INT_COMP" 1 323 "0x008D40"
-F G "main" 0 22 "void()"
-V L "leitura" 0 24 "int16"
-V L "possiveisValores" 0 26 "int8[11]"
-V L "maior" 0 27 "int8"
-V L "cont" 0 28 "int8"
-V L "temperaturaBruta" 0 29 "int8"
+V G "value" 0 20 "int8"
+F G "main" 0 26 "void()"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0
@@ -333,5 +329,3 @@ F B "puts" 1 2
 F B "getch" 0 1
 F B "gets" 1 3
 F B "kbhit" 0 1
-F B "set_uart_speed" 1 3
-F B "setup_uart" 1 3

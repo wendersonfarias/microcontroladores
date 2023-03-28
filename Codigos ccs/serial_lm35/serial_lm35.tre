@@ -1,13 +1,7 @@
 ÀÄserial_lm35
-   ÀÄmain  0/120  Ram=18
+   ÀÄmain  0/118  Ram=18
       ÃÄ??0??
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄ@PRINTF_U_66  0/55  Ram=2
-      ³  ÃÄ@DIV88  0/21  Ram=3
-      ³  ÃÄ@PUTCHAR_1_  0/41  Ram=1
-      ³  ÃÄ@DIV88  0/21  Ram=3
-      ³  ÃÄ@PUTCHAR_1_  0/41  Ram=1
-      ³  ÀÄ@PUTCHAR_1_  0/41  Ram=1
-      ÃÄ@PUTCHAR_1_  0/41  Ram=1
-      ÀÄ@PUTCHAR_1_  0/41  Ram=1
+      ÃÄ@delay_ms1  0/22  Ram=1
+      ÀÄ@PRINTF_U_1200_62_63  0/58  Ram=2
+         ÃÄ@DIV88  0/21  Ram=3
+         ÀÄ@DIV88  0/21  Ram=3

@@ -15,7 +15,7 @@
 #FUSES RESERVED                 //Used to set the reserved FUSE bits
 
 #use delay(clock=20000000)
-#use rs232(baud=1200,parity=N,xmit=PIN_D2,rcv=PIN_C7,bits=8,stream=leitura_lm35)
+#use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=leitura_lm35)
 
 
 
@@ -42,7 +42,7 @@ void main()
       maior = 0;
       for(cont = 0; cont <= 10; cont++){
          leitura = read_adc();
-         delay_ms(10);
+         delay_us(10);
          if(leitura<= 255){
              possiveisValores[cont] = (int8)leitura;
          }
@@ -61,9 +61,9 @@ void main()
       
       temperaturaBruta = maior;
       
-      delay_ms(100);
+      delay_ms(20);
       
-      fprintf(leitura_lm35, "%u\np", temperaturaBruta);
+      fprintf(leitura_lm35, "%u", temperaturaBruta);
       
       
       

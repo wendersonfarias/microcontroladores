@@ -12,7 +12,6 @@
 #FUSES NOWRT                 	//Program memory not write protected
 #FUSES RESERVED              	//Used to set the reserved FUSE bits
 
-#use delay(clock=16000000)
-#use rs232(baud=9600,parity=N,xmit=PIN_D2,rcv=PIN_D7,bits=8,stream=lm35)
-#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_D1,bits=8,stream=envia)
+#use delay(clock=20000000)
+#use rs232(baud=1200,parity=N,xmit=PIN_D1,rcv=PIN_C7,bits=8,stream=recebe)
 

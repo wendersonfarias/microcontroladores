@@ -1,0 +1,7 @@
+юдrx_serial-lm35
+   цдMAIN  0/108  Ram=0
+   Ё  цд??0??
+   Ё  юд@PRINTF_U_1200_62_63  0/58  Ram=2
+   Ё     цд@DIV88  0/21  Ram=3
+   Ё     юд@DIV88  0/21  Ram=3
+   юдRDA_isr  0/47  Ram=4
