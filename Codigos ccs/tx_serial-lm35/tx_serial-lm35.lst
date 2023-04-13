@@ -1,17 +1,17 @@
-CCS PCM C Compiler, Version 4.104, 5967               28-mar-23 02:11
+CCS PCM C Compiler, Version 4.104, 5967               30-mar-23 00:16
 
                Filename: C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\tx_serial-lm35\tx_serial-lm35.lst
 
-               ROM used: 126 words (2%)
+               ROM used: 554 words (7%)
                          Largest free fragment is 2048
-               RAM used: 10 (3%) at main() level
-                         11 (3%) worst case
-               Stack:    1 locations
+               RAM used: 9 (2%) at main() level
+                         35 (10%) worst case
+               Stack:    2 locations
 
 *
-0000:  MOVLW  00
+0000:  MOVLW  01
 0001:  MOVWF  0A
-0002:  GOTO   018
+0002:  GOTO   1DB
 0003:  NOP
 .................... //#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\tx_serial-lm35\tx_serial-lm35.h" 
 ....................  
@@ -34,173 +34,146 @@ CCS PCM C Compiler, Version 4.104, 5967               28-mar-23 02:11
 .................... #FUSES RESERVED                 //Used to set the reserved FUSE bits 
 ....................  
 .................... #use delay(clock=20000000) 
-0004:  MOVLW  26
-0005:  MOVWF  04
-0006:  BCF    03.7
-0007:  MOVF   00,W
-0008:  BTFSC  03.2
-0009:  GOTO   017
-000A:  MOVLW  06
-000B:  MOVWF  78
-000C:  CLRF   77
-000D:  DECFSZ 77,F
-000E:  GOTO   00D
-000F:  DECFSZ 78,F
-0010:  GOTO   00C
-0011:  MOVLW  7B
-0012:  MOVWF  77
-0013:  DECFSZ 77,F
-0014:  GOTO   013
-0015:  DECFSZ 00,F
-0016:  GOTO   00A
-0017:  RETURN
+01C5:  MOVLW  25
+01C6:  MOVWF  04
+01C7:  BCF    03.7
+01C8:  MOVF   00,W
+01C9:  BTFSC  03.2
+01CA:  GOTO   1D8
+01CB:  MOVLW  06
+01CC:  MOVWF  78
+01CD:  CLRF   77
+01CE:  DECFSZ 77,F
+01CF:  GOTO   1CE
+01D0:  DECFSZ 78,F
+01D1:  GOTO   1CD
+01D2:  MOVLW  7B
+01D3:  MOVWF  77
+01D4:  DECFSZ 77,F
+01D5:  GOTO   1D4
+01D6:  DECFSZ 00,F
+01D7:  GOTO   1CB
+01D8:  BCF    0A.3
+01D9:  BCF    0A.4
+01DA:  GOTO   228 (RETURN)
 .................... #use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=leitura_lm35) 
 ....................  
 ....................  
 .................... void main() 
 .................... { 
-0018:  CLRF   04
-0019:  BCF    03.7
-001A:  MOVLW  1F
-001B:  ANDWF  03,F
-001C:  MOVLW  FF
-001D:  BSF    03.5
-001E:  MOVWF  19
-001F:  MOVLW  A2
-0020:  MOVWF  18
-0021:  MOVLW  90
-0022:  BCF    03.5
-0023:  MOVWF  18
-0024:  BSF    03.5
-0025:  BSF    1F.0
-0026:  BSF    1F.1
-0027:  BSF    1F.2
-0028:  BCF    1F.3
-0029:  MOVLW  07
-002A:  MOVWF  1C
-....................    int16 leitura; 
-....................    int parteAlta; 
-....................    int parteBaixa; 
-....................    int valor; 
-....................   
+01DB:  CLRF   04
+01DC:  BCF    03.7
+01DD:  MOVLW  1F
+01DE:  ANDWF  03,F
+01DF:  MOVLW  FF
+01E0:  BSF    03.5
+01E1:  MOVWF  19
+01E2:  MOVLW  A2
+01E3:  MOVWF  18
+01E4:  MOVLW  90
+01E5:  BCF    03.5
+01E6:  MOVWF  18
+01E7:  BSF    03.5
+01E8:  BSF    1F.0
+01E9:  BSF    1F.1
+01EA:  BSF    1F.2
+01EB:  BCF    1F.3
+01EC:  MOVLW  07
+01ED:  MOVWF  1C
+....................    float leitura; 
 ....................     
-....................     setup_adc(ADC_CLOCK_DIV_16); 
-002B:  BSF    1F.6
-002C:  BCF    03.5
-002D:  BSF    1F.6
-002E:  BCF    1F.7
-002F:  BSF    03.5
-0030:  BSF    1F.7
-0031:  BCF    03.5
-0032:  BSF    1F.0
-....................    setup_adc_ports(AN0); 
-0033:  BSF    03.5
-0034:  BCF    1F.0
-0035:  BSF    1F.1
-0036:  BSF    1F.2
-0037:  BSF    1F.3
+....................     
+....................     
+....................   
+....................    setup_adc_ports(AN0_AN1_AN3); 
+01EE:  BCF    1F.0
+01EF:  BCF    1F.1
+01F0:  BSF    1F.2
+01F1:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_DIV_16); 
+01F2:  BSF    1F.6
+01F3:  BCF    03.5
+01F4:  BSF    1F.6
+01F5:  BCF    1F.7
+01F6:  BSF    03.5
+01F7:  BSF    1F.7
+01F8:  BCF    03.5
+01F9:  BSF    1F.0
+....................     
 ....................   
 ....................    set_adc_channel(0); 
-0038:  MOVLW  00
-0039:  MOVWF  78
-003A:  BCF    03.5
-003B:  MOVF   1F,W
-003C:  ANDLW  C7
-003D:  IORWF  78,W
-003E:  MOVWF  1F
+01FA:  MOVLW  00
+01FB:  MOVWF  78
+01FC:  MOVF   1F,W
+01FD:  ANDLW  C7
+01FE:  IORWF  78,W
+01FF:  MOVWF  1F
 ....................    delay_us(20); 
-003F:  MOVLW  21
-0040:  MOVWF  77
-0041:  DECFSZ 77,F
-0042:  GOTO   041
+0200:  MOVLW  21
+0201:  MOVWF  77
+0202:  DECFSZ 77,F
+0203:  GOTO   202
 ....................  
 ....................    while(TRUE){ 
 ....................       leitura = read_adc(); 
-0043:  BSF    1F.2
-0044:  BTFSC  1F.2
-0045:  GOTO   044
-0046:  BSF    03.5
-0047:  MOVF   1E,W
-0048:  BCF    03.5
-0049:  MOVWF  21
-004A:  MOVF   1E,W
-004B:  MOVWF  22
+0204:  BSF    1F.2
+0205:  BTFSC  1F.2
+0206:  GOTO   205
+0207:  MOVF   1E,W
+0208:  MOVWF  7A
+0209:  BSF    03.5
+020A:  MOVF   1E,W
+020B:  BCF    03.5
+020C:  MOVWF  25
+020D:  MOVF   1E,W
+020E:  MOVWF  26
+020F:  GOTO   004
+0210:  MOVF   7A,W
+0211:  MOVWF  24
+0212:  MOVF   79,W
+0213:  MOVWF  23
+0214:  MOVF   78,W
+0215:  MOVWF  22
+0216:  MOVF   77,W
+0217:  MOVWF  21
 ....................        
-....................       if(leitura > 255){ 
-004C:  MOVF   22,W
-004D:  SUBLW  00
-004E:  BTFSC  03.0
-004F:  GOTO   053
-....................          valor = 255; 
-0050:  MOVLW  FF
-0051:  MOVWF  25
-....................       }else { 
-0052:  GOTO   055
-....................          valor = (int8) leitura; 
-0053:  MOVF   21,W
-0054:  MOVWF  25
-....................       } 
 ....................        
-....................       parteBaixa =  make8(leitura,0); 
-0055:  MOVF   21,W
-0056:  MOVWF  24
-....................       parteAlta =  make8(leitura,1); 
-0057:  MOVF   22,W
-0058:  MOVWF  23
 ....................        
-....................       
 ....................        
-....................      putc('i'); 
-0059:  MOVLW  69
-005A:  BTFSS  0C.4
-005B:  GOTO   05A
-005C:  MOVWF  19
-....................      delay_ms(100); 
-005D:  MOVLW  64
-005E:  MOVWF  26
-005F:  CALL   004
-....................      putc('f'); 
-0060:  MOVLW  66
-0061:  BTFSS  0C.4
-0062:  GOTO   061
-0063:  MOVWF  19
-....................      delay_ms(100); 
-0064:  MOVLW  64
-0065:  MOVWF  26
-0066:  CALL   004
-....................      putc('m'); 
-0067:  MOVLW  6D
-0068:  BTFSS  0C.4
-0069:  GOTO   068
-006A:  MOVWF  19
-....................      delay_ms(100); 
-006B:  MOVLW  64
-006C:  MOVWF  26
-006D:  CALL   004
-....................      putc('t'); 
-006E:  MOVLW  74
-006F:  BTFSS  0C.4
-0070:  GOTO   06F
-0071:  MOVWF  19
-....................      delay_ms(100); 
-0072:  MOVLW  64
-0073:  MOVWF  26
-0074:  CALL   004
-....................      putc(valor); 
-0075:  MOVF   25,W
-0076:  BTFSS  0C.4
-0077:  GOTO   076
-0078:  MOVWF  19
-....................      delay_ms(100); 
-0079:  MOVLW  64
-007A:  MOVWF  26
-007B:  CALL   004
+....................        
+....................        
+....................        
+....................      
+....................      fprintf(leitura_lm35,"%f",leitura); 
+0218:  MOVLW  89
+0219:  MOVWF  04
+021A:  MOVF   24,W
+021B:  MOVWF  28
+021C:  MOVF   23,W
+021D:  MOVWF  27
+021E:  MOVF   22,W
+021F:  MOVWF  26
+0220:  MOVF   21,W
+0221:  MOVWF  25
+0222:  MOVLW  02
+0223:  MOVWF  29
+0224:  GOTO   065
+....................      delay_ms(200); 
+0225:  MOVLW  C8
+0226:  MOVWF  25
+0227:  GOTO   1C5
 ....................        
 ....................    } 
-007C:  GOTO   043
+0228:  GOTO   204
 ....................  
 .................... } 
-007D:  SLEEP
+....................  
+.................... //105 i 
+.................... //102 f 
+.................... //109 m 
+.................... //116 t 
+.................... // 
+0229:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F3A   HS NOWDT NOPUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

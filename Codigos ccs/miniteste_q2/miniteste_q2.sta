@@ -1,45 +1,44 @@
 
-ROM used: 281 (3%)
-          281 (3%) including unused fragments
+ROM used: 193 (2%)
+          193 (2%) including unused fragments
 
-          1 Average locations per line
-          7 Average locations per statement
+          0 Average locations per line
+          8 Average locations per statement
 
-RAM used: 23 (6%) at main() level
-          25 (7%) worst case
+RAM used: 19 (5%) at main() level
+          19 (5%) worst case
 
 Stack used: 1 worst case (out of 8 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   89    38 100  miniteste_q2.c
+  124    25 100  miniteste_q2.c
   326     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
 ----- -----
-  415    38 Total
+  450    25 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     73  26   2   275  3.7  RTCC_isr
-0     60  21   2   188  3.6  TIMER1_isr
-0     92  33   0   375  2.8  MAIN
+0     63  33   0   270  3.7  TIMER0_isr
+0     83  43   0   285  2.8  MAIN
 
 Program metrics:
-    Functions               3
-    Statements              38
-    Comments                83
-    Volume (V)              1094
-    Difficilty (D)          10.1
-    Effort to implement (E) 11095
-    Time to implement (T)   10 minutes
+    Functions               2
+    Statements              25
+    Comments                261
+    Volume (V)              665
+    Difficilty (D)          6.5
+    Effort to implement (E) 4296
+    Time to implement (T)   4 minutes
     Est Delivered Bugs (B)  0
-    Cyclomatic Complexity   5
-    Maintainability (MI)    147
+    Cyclomatic Complexity   3
+    Maintainability (MI)    54
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-00037    52  0  
-00038-007FF   225  1767  
+00004-0002E    43  0  
+0002F-007FF   146  1855  
 00800-00FFF     0  2048  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  

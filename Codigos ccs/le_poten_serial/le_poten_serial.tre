@@ -1,0 +1,17 @@
+읕le_poten_serial
+   읕main  0/241  Ram=10
+      쳐??0??
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      쳐@DIV88  0/21  Ram=3
+      읕@delay_ms1  0/20  Ram=1

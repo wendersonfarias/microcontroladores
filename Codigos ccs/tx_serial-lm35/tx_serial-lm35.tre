@@ -1,8 +1,10 @@
 ÀÄtx_serial-lm35
-   ÀÄmain  0/102  Ram=5
+   ÀÄmain  0/79  Ram=4
       ÃÄ??0??
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄ@delay_ms1  0/20  Ram=1
-      ÀÄ@delay_ms1  0/20  Ram=1
+      ÃÄ@ITOF  0/31  Ram=2
+      ÃÄ@PRINTF_L32D_1200_62_63FPFPF  0/352  Ram=13
+      ³  ÃÄ@MULFF  (Inline)  Ram=13
+      ³  ÃÄ@FTOSD  (Inline)  Ram=5
+      ³  ÃÄ@DIV3232  0/66  Ram=13
+      ³  ÀÄ@DIV3232  0/66  Ram=13
+      ÀÄ@delay_ms1  0/22  Ram=1

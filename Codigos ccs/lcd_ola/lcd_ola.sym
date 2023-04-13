@@ -1,0 +1,116 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004     @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-022 MAIN.leitura
+023-026 MAIN.graus
+027-02A @PRINTF_L32D_82FPFPF.P1
+027     lcd_ini.conta
+027-028 @ITOF.P1
+027     @PSTRINGC7_82.@SCRATCH1
+028     lcd_ini.@SCRATCH1
+028     @PSTRINGC7_82.@SCRATCH2
+029     @PSTRINGC7_82.@SCRATCH3
+02B     @PRINTF_L32D_82FPFPF.P1
+02C     @PRINTF_L32D_82FPFPF.@SCRATCH1
+02D     @PRINTF_L32D_82FPFPF.@SCRATCH2
+02E     @PRINTF_L32D_82FPFPF.@SCRATCH3
+02F     @PRINTF_L32D_82FPFPF.@SCRATCH4
+030     @PRINTF_L32D_82FPFPF.@SCRATCH5
+031     @PRINTF_L32D_82FPFPF.@SCRATCH6
+032     @PRINTF_L32D_82FPFPF.@SCRATCH7
+033     @PRINTF_L32D_82FPFPF.@SCRATCH8
+034-037 @FTOSD.P1
+034-037 @DIV3232.P2
+034     lcd_escreve.c
+034-037 @MULFF.P1
+035     @delay_ms1.P1
+035     lcd_pos_xy.x
+036     lcd_pos_xy.y
+037     lcd_pos_xy.endereco
+038-03B @MULFF.P1
+038-03B @DIV3232.P2
+038     lcd_pos_xy.@SCRATCH1
+038     @FTOSD.@SCRATCH1
+039     lcd_envia_byte.endereco
+03A     lcd_envia_byte.dado
+03B     lcd_envia_byte.@SCRATCH1
+03C     lcd_envia_nibble.dado
+03C     @MULFF.@SCRATCH1
+03C     @DIV3232.@SCRATCH1
+03D     @MULFF.@SCRATCH2
+03D     @DIV3232.@SCRATCH2
+03E     @MULFF.@SCRATCH3
+03E     @DIV3232.@SCRATCH3
+03F     @MULFF.@SCRATCH4
+03F     @DIV3232.@SCRATCH4
+040     @MULFF.@SCRATCH5
+040     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+0013  @delay_ms1
+0004  INI_LCD
+0027  lcd_envia_nibble
+0052  lcd_envia_byte
+0073  lcd_ini
+0148  lcd_pos_xy
+015A  lcd_escreve
+02F5  MAIN
+00B4  @ITOF
+00D3  @MULFF
+000C  @const97
+0182  @PSTRINGC7_82
+0233  @FTOSD
+01CA  @DIV3232
+020C  @PRINTF_L32D_82FPFPF
+02F5  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\lcd_ola\
+
+Project Files:
+    lcd_ola.c
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\mod_lcd.c
+
+Units:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\lcd_ola\lcd_ola (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      lcd_ola.err
+    Ext Symbols: lcd_ola.esym
+    INHX8:       lcd_ola.hex
+    Symbols:     lcd_ola.sym
+    List:        lcd_ola.lst
+    Debug/COFF:  lcd_ola.cof
+    Project:     lcd_ola.PJT
+    Call Tree:   lcd_ola.tre
+    Statistics:  lcd_ola.sta

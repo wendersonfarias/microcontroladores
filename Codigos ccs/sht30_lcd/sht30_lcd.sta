@@ -1,0 +1,66 @@
+
+ROM used: 1672 (20%)
+          1672 (20%) including unused fragments
+
+          3 Average locations per line
+          19 Average locations per statement
+
+RAM used: 16 (4%) at main() level
+          55 (15%) worst case
+
+Stack used: 3 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   68    19  22  sht30_lcd.c
+  326     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+  152    69  78  ..\..\drives\SHT3x.c
+   32     0   0  ..\..\drives\SHT3x.h
+----- -----
+  578    88 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   1   1             @delay_ms1
+0     66   4   3             @I2C_READ_1
+0     70   4   1             @I2C_WRITE_1
+0     15   1   4   138  4.3  make_word
+0     55   3   0    67  1.2  SHT3x_init
+ Inline        0    37  1.1  SHT3x_reset
+ Inline        1   123  3.3  SHT3x_heater_state
+0     61   4   6   258  3.1  SHT3x_write_command
+0     43   3   6   475 10.3  SHT3x_calculate_crc8
+0    778  47  24  1408  8.3  SHT3x_read_temp_humidity
+0     42   3  13             @MUL3232
+ Inline        4             @DTOF
+ Inline       16             @ADDFF
+ Inline        5             @FTOSD
+0     46   3   5             @SDTOF
+0    202  12  14             @DIVFF
+0    162  10  10   646  4.0  MAIN
+0     31   2   4             @SFTOI
+0     21   1   3             @DIV88
+0     56   3   2             @PRINTF_U_1200_62_63
+
+Program metrics:
+    Functions               8
+    Statements              88
+    Comments                84
+    Volume (V)              4523
+    Difficilty (D)          34.3
+    Effort to implement (E) 155013
+    Time to implement (T)   2 hours, 24 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   6
+    Maintainability (MI)    51
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF  1668  376  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

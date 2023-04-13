@@ -16,36 +16,21 @@
 #use delay(clock=20000000)
 #use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=sensor)
 
-int1 flagI = 0, flagF =0,flagM = 0,flagT = 0;
-int8 parteAlta, ParteBaixa;
-int8 valor;
-int8 recebido;
+int1 envia =0;
+int1 recebe = 0;
+int valor = 0;
+int8 recebido = 0;
 
 #int_RDA
 void  RDA_isr(void) 
 {
    recebido = getc();
-   if(recebido == 'i'){
-      flagI = 1;
-   }
-   if(recebido == 'f'  ){
-       flagF = 1;
-   }
-   if(recebido == 'm' ){
-       flagM = 1;
-   }
-   if(recebido == 't' ){
-       flagT = 1;
-   }
-   if (flagI == 1 && flagF == 1 && flagM == 1 && flagT == 1 ){
-       valor = recebido;
-       output_toggle(PIN_D1);
-       flagI = 0;
-       flagF = 0;
-       flagM = 0;
-       flagT = 0;
+  
+   valor = recebido;
+
+   envia = 1;
      
-   }
+   
 }
 
 
@@ -66,9 +51,13 @@ void main()
    enable_interrupts(GLOBAL);
 
    while(TRUE){
-      //valor = make16(parteBaixa,parteAlta);
+      if(envia == 1){
+         fprintf(sensor, "%u\n", valor);
+         envia = 0;
+         output_toggle(PIN_D1);
+      }
       
-      fprintf(sensor, "%u \n", valor);
+      
    }
 
 }

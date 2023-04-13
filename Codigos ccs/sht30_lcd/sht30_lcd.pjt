@@ -1,0 +1,29 @@
+[PROJECT]
+Target=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\sht30_lcd\sht30_lcd.hex
+Development_Mode=
+Processor_Text=PIC16F877A
+ToolSuite=CCS
+Processor=0x877A
+[C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\sht30_lcd\sht30_lcd]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\sht30_lcd\sht30_lcd.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Units]
+Link=0
+Count=1
+1=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\sht30_lcd\sht30_lcd
+[Opened Files]
+1=..\sht30_lcd\sht30_lcd.c
+2=sht30_lcd.sta
+3=
+4=..\..\..\..\sht30\SHT3x Temperature - Relative Humidity Sensor Demo\SHT3x.c
+5=..\..\..\..\sht30\SHT3x Temperature - Relative Humidity Sensor Demo\temp-hum.c
+6=..\tx_serial-lm35\tx_serial-lm35.c
+7=

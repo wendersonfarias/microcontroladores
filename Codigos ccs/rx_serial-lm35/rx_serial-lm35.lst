@@ -1,17 +1,17 @@
-CCS PCM C Compiler, Version 4.104, 5967               28-mar-23 02:16
+CCS PCM C Compiler, Version 4.104, 5967               29-mar-23 13:38
 
                Filename: C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\rx_serial-lm35\rx_serial-lm35.lst
 
-               ROM used: 283 words (3%)
+               ROM used: 255 words (3%)
                          Largest free fragment is 2048
-               RAM used: 16 (4%) at main() level
-                         25 (7%) worst case
+               RAM used: 17 (5%) at main() level
+                         21 (6%) worst case
                Stack:    3 worst case (2 in main + 1 for interrupts)
 
 *
 0000:  MOVLW  00
 0001:  MOVWF  0A
-0002:  GOTO   0AF
+0002:  GOTO   08B
 0003:  NOP
 0004:  MOVWF  7F
 0005:  SWAPF  03,W
@@ -80,9 +80,10 @@ CCS PCM C Compiler, Version 4.104, 5967               28-mar-23 02:16
 .................... #use delay(clock=20000000) 
 .................... #use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=sensor) 
 ....................  
-.................... int1 flagI = 0, flagF =0,flagM = 0,flagT = 0; 
-.................... int8 valor; 
-.................... int8 recebido; 
+.................... int1 envia =0; 
+.................... int1 recebe = 0; 
+.................... int valor = 0; 
+.................... int8 recebido = 0; 
 ....................  
 .................... #int_RDA 
 .................... void  RDA_isr(void)  
@@ -93,203 +94,164 @@ CCS PCM C Compiler, Version 4.104, 5967               28-mar-23 02:16
 0032:  GOTO   031
 0033:  MOVF   1A,W
 0034:  MOVWF  29
-....................    if(recebido == 'i'){ 
+....................    
+....................    valor = recebido; 
 0035:  MOVF   29,W
-0036:  SUBLW  69
-0037:  BTFSS  03.2
-0038:  GOTO   03A
-....................       flagI = 1; 
-0039:  BSF    27.0
-....................    } 
-....................    if(recebido == 'f'  ){ 
-003A:  MOVF   29,W
-003B:  SUBLW  66
-003C:  BTFSS  03.2
-003D:  GOTO   03F
-....................        flagF = 1; 
-003E:  BSF    27.1
-....................    } 
-....................    if(recebido == 'm' ){ 
-003F:  MOVF   29,W
-0040:  SUBLW  6D
-0041:  BTFSS  03.2
-0042:  GOTO   044
-....................        flagM = 1; 
-0043:  BSF    27.2
-....................    } 
-....................    if(recebido == 't' ){ 
-0044:  MOVF   29,W
-0045:  SUBLW  74
-0046:  BTFSS  03.2
-0047:  GOTO   049
-....................        flagT = 1; 
-0048:  BSF    27.3
-....................    } 
-....................    if (flagI == 1 && flagF == 1 && flagM == 1 && flagT == 1 ){ 
-0049:  BTFSS  27.0
-004A:  GOTO   05C
-004B:  BTFSS  27.1
-004C:  GOTO   05C
-004D:  BTFSS  27.2
-004E:  GOTO   05C
-004F:  BTFSS  27.3
-0050:  GOTO   05C
-....................        valor = recebido; 
-0051:  MOVF   29,W
-0052:  MOVWF  28
-....................        output_toggle(PIN_D1); 
-0053:  BSF    03.5
-0054:  BCF    08.1
-0055:  MOVLW  02
-0056:  BCF    03.5
-0057:  XORWF  08,F
-....................        flagI = 0; 
-0058:  BCF    27.0
-....................        flagF = 0; 
-0059:  BCF    27.1
-....................        flagM = 0; 
-005A:  BCF    27.2
-....................        flagT = 0; 
-005B:  BCF    27.3
+0036:  MOVWF  28
+....................  
+....................    envia = 1; 
+0037:  BSF    27.0
 ....................       
-....................    } 
+....................     
 .................... } 
 ....................  
 ....................  
 ....................  
-005C:  BCF    0C.5
-005D:  BCF    0A.3
-005E:  BCF    0A.4
-005F:  GOTO   01D
+0038:  BCF    0C.5
+0039:  BCF    0A.3
+003A:  BCF    0A.4
+003B:  GOTO   01D
 .................... void main() 
 .................... { 
 *
-00AF:  CLRF   04
-00B0:  BCF    03.7
-00B1:  MOVLW  1F
-00B2:  ANDWF  03,F
-00B3:  MOVLW  FF
-00B4:  BSF    03.5
-00B5:  MOVWF  19
-00B6:  MOVLW  A2
-00B7:  MOVWF  18
-00B8:  MOVLW  90
-00B9:  BCF    03.5
-00BA:  MOVWF  18
-00BB:  BCF    27.0
-00BC:  BCF    27.1
-00BD:  BCF    27.2
-00BE:  BCF    27.3
-00BF:  BSF    03.5
-00C0:  BSF    1F.0
-00C1:  BSF    1F.1
-00C2:  BSF    1F.2
-00C3:  BCF    1F.3
-00C4:  MOVLW  07
-00C5:  MOVWF  1C
+008B:  CLRF   04
+008C:  BCF    03.7
+008D:  MOVLW  1F
+008E:  ANDWF  03,F
+008F:  MOVLW  FF
+0090:  BSF    03.5
+0091:  MOVWF  19
+0092:  MOVLW  A2
+0093:  MOVWF  18
+0094:  MOVLW  90
+0095:  BCF    03.5
+0096:  MOVWF  18
+0097:  BCF    27.0
+0098:  BCF    27.1
+0099:  CLRF   28
+009A:  CLRF   29
+009B:  BSF    03.5
+009C:  BSF    1F.0
+009D:  BSF    1F.1
+009E:  BSF    1F.2
+009F:  BCF    1F.3
+00A0:  MOVLW  07
+00A1:  MOVWF  1C
 ....................  
 ....................    setup_adc_ports(NO_ANALOGS); 
 *
-00C9:  BSF    03.5
-00CA:  BSF    1F.0
-00CB:  BSF    1F.1
-00CC:  BSF    1F.2
-00CD:  BCF    1F.3
+00A5:  BSF    03.5
+00A6:  BSF    1F.0
+00A7:  BSF    1F.1
+00A8:  BSF    1F.2
+00A9:  BCF    1F.3
 ....................    setup_adc(ADC_CLOCK_DIV_2); 
-00CE:  BCF    1F.6
-00CF:  BCF    03.5
-00D0:  BCF    1F.6
-00D1:  BCF    1F.7
-00D2:  BSF    03.5
-00D3:  BCF    1F.7
-00D4:  BCF    03.5
-00D5:  BSF    1F.0
+00AA:  BCF    1F.6
+00AB:  BCF    03.5
+00AC:  BCF    1F.6
+00AD:  BCF    1F.7
+00AE:  BSF    03.5
+00AF:  BCF    1F.7
+00B0:  BCF    03.5
+00B1:  BSF    1F.0
 ....................    setup_psp(PSP_DISABLED); 
-00D6:  BSF    03.5
-00D7:  BCF    09.4
+00B2:  BSF    03.5
+00B3:  BCF    09.4
 ....................    setup_spi(SPI_SS_DISABLED); 
-00D8:  BCF    03.5
-00D9:  BCF    14.5
-00DA:  BCF    2A.5
-00DB:  MOVF   2A,W
-00DC:  BSF    03.5
-00DD:  MOVWF  07
-00DE:  BCF    03.5
-00DF:  BSF    2A.4
-00E0:  MOVF   2A,W
-00E1:  BSF    03.5
-00E2:  MOVWF  07
-00E3:  BCF    03.5
-00E4:  BCF    2A.3
-00E5:  MOVF   2A,W
-00E6:  BSF    03.5
-00E7:  MOVWF  07
-00E8:  MOVLW  01
-00E9:  BCF    03.5
-00EA:  MOVWF  14
-00EB:  MOVLW  00
-00EC:  BSF    03.5
-00ED:  MOVWF  14
+00B4:  BCF    03.5
+00B5:  BCF    14.5
+00B6:  BCF    2A.5
+00B7:  MOVF   2A,W
+00B8:  BSF    03.5
+00B9:  MOVWF  07
+00BA:  BCF    03.5
+00BB:  BSF    2A.4
+00BC:  MOVF   2A,W
+00BD:  BSF    03.5
+00BE:  MOVWF  07
+00BF:  BCF    03.5
+00C0:  BCF    2A.3
+00C1:  MOVF   2A,W
+00C2:  BSF    03.5
+00C3:  MOVWF  07
+00C4:  MOVLW  01
+00C5:  BCF    03.5
+00C6:  MOVWF  14
+00C7:  MOVLW  00
+00C8:  BSF    03.5
+00C9:  MOVWF  14
 ....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1); 
-00EE:  MOVF   01,W
-00EF:  ANDLW  C7
-00F0:  IORLW  08
-00F1:  MOVWF  01
+00CA:  MOVF   01,W
+00CB:  ANDLW  C7
+00CC:  IORLW  08
+00CD:  MOVWF  01
 ....................    setup_timer_1(T1_DISABLED); 
-00F2:  BCF    03.5
-00F3:  CLRF   10
+00CE:  BCF    03.5
+00CF:  CLRF   10
 ....................    setup_timer_2(T2_DISABLED,0,1); 
-00F4:  MOVLW  00
-00F5:  MOVWF  78
-00F6:  MOVWF  12
-00F7:  MOVLW  00
-00F8:  BSF    03.5
-00F9:  MOVWF  12
+00D0:  MOVLW  00
+00D1:  MOVWF  78
+00D2:  MOVWF  12
+00D3:  MOVLW  00
+00D4:  BSF    03.5
+00D5:  MOVWF  12
 ....................    setup_comparator(NC_NC_NC_NC); 
-00FA:  MOVLW  07
-00FB:  MOVWF  1C
-00FC:  MOVF   05,W
-00FD:  MOVWF  05
-00FE:  MOVLW  10
-00FF:  MOVWF  77
-0100:  DECFSZ 77,F
-0101:  GOTO   100
-0102:  NOP
-0103:  MOVF   1C,W
-0104:  BCF    03.5
-0105:  BCF    0D.6
+00D6:  MOVLW  07
+00D7:  MOVWF  1C
+00D8:  MOVF   05,W
+00D9:  MOVWF  05
+00DA:  MOVLW  10
+00DB:  MOVWF  77
+00DC:  DECFSZ 77,F
+00DD:  GOTO   0DC
+00DE:  NOP
+00DF:  MOVF   1C,W
+00E0:  BCF    03.5
+00E1:  BCF    0D.6
 ....................    setup_vref(FALSE); 
-0106:  BSF    03.5
-0107:  CLRF   1D
+00E2:  BSF    03.5
+00E3:  CLRF   1D
 ....................    enable_interrupts(INT_RDA); 
-0108:  BSF    0C.5
+00E4:  BSF    0C.5
 ....................    enable_interrupts(GLOBAL); 
-0109:  MOVLW  C0
-010A:  BCF    03.5
-010B:  IORWF  0B,F
+00E5:  MOVLW  C0
+00E6:  BCF    03.5
+00E7:  IORWF  0B,F
 ....................  
 ....................    while(TRUE){ 
-....................       //valor = make16(parteBaixa,parteAlta); 
+....................       if(envia == 1){ 
+00E8:  BTFSS  27.0
+00E9:  GOTO   0FD
+....................          fprintf(sensor, "%u \n", valor); 
+00EA:  MOVF   28,W
+00EB:  MOVWF  2B
+00EC:  MOVLW  1B
+00ED:  MOVWF  2C
+00EE:  GOTO   051
+00EF:  MOVLW  20
+00F0:  BTFSS  0C.4
+00F1:  GOTO   0F0
+00F2:  MOVWF  19
+00F3:  MOVLW  0A
+00F4:  BTFSS  0C.4
+00F5:  GOTO   0F4
+00F6:  MOVWF  19
+....................          envia = 0; 
+00F7:  BCF    27.0
+....................          output_toggle(PIN_D1); 
+00F8:  BSF    03.5
+00F9:  BCF    08.1
+00FA:  MOVLW  02
+00FB:  BCF    03.5
+00FC:  XORWF  08,F
+....................       } 
 ....................        
-....................       fprintf(sensor, "%u \n", valor); 
-010C:  MOVF   28,W
-010D:  MOVWF  2B
-010E:  MOVLW  1B
-010F:  MOVWF  2C
-0110:  GOTO   075
-0111:  MOVLW  20
-0112:  BTFSS  0C.4
-0113:  GOTO   112
-0114:  MOVWF  19
-0115:  MOVLW  0A
-0116:  BTFSS  0C.4
-0117:  GOTO   116
-0118:  MOVWF  19
+....................        
 ....................    } 
-0119:  GOTO   10C
+00FD:  GOTO   0E8
 ....................  
 .................... } 
-011A:  SLEEP
+00FE:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F3A   HS NOWDT NOPUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT

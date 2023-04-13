@@ -1,0 +1,25 @@
+[PROJECT]
+Target=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\analogico_pot\analogico_pot.hex
+Development_Mode=
+Processor_Text=PIC16F877A
+ToolSuite=CCS
+Processor=0x877A
+[C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\analogico_pot\analogico_pot]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\analogico_pot\analogico_pot.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Units]
+Link=0
+Count=1
+1=C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\analogico_pot\analogico_pot
+[Opened Files]
+1=analogico_pot.c
+2=analogico_pot.h
+3=

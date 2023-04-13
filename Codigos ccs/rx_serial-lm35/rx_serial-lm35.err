@@ -1,2 +1,3 @@
-      Memory usage:   ROM=3%      RAM=4% - 7%
-      0 Errors,  0 Warnings.
+>>> Warning 202 "rx_serial-lm35.c" Line 20(13,19): Variable never used:   recebe
+      Memory usage:   ROM=3%      RAM=5% - 6%
+      0 Errors,  1 Warnings.

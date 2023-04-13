@@ -20,14 +20,14 @@
 
 void main()
 {
-   int16 leitura;
-   int parteAlta;
-   int parteBaixa;
-   int valor;
- 
+   float leitura;
    
-    setup_adc(ADC_CLOCK_DIV_16);
-   setup_adc_ports(AN0);
+   
+   
+ 
+   setup_adc_ports(AN0_AN1_AN3);
+   setup_adc(ADC_CLOCK_DIV_16);
+   
  
    set_adc_channel(0);
    delay_us(20);
@@ -35,28 +35,22 @@ void main()
    while(TRUE){
       leitura = read_adc();
       
-      if(leitura > 255){
-         valor = 255;
-      }else {
-         valor = (int8) leitura;
-      }
       
-      parteBaixa =  make8(leitura,0);
-      parteAlta =  make8(leitura,1);
       
-     
       
-     putc('i');
-     delay_ms(100);
-     putc('f');
-     delay_ms(100);
-     putc('m');
-     delay_ms(100);
-     putc('t');
-     delay_ms(100);
-     putc(valor);
-     delay_ms(100);
+      
+      
+      
+    
+     fprintf(leitura_lm35,"%f",leitura);
+     delay_ms(200);
       
    }
 
 }
+
+//105 i
+//102 f
+//109 m
+//116 t
+//

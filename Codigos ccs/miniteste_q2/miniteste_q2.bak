@@ -1,5 +1,5 @@
 //#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\miniteste_q2\miniteste_q2.h"
-#include <16F877A.h>
+/*#include <16F877A.h>
 #device adc=8
 
 #FUSES NOWDT                    //No Watch Dog Timer
@@ -20,9 +20,9 @@ int16 led1, led2, led3, led4, led5;
 #int_RTCC
 void  RTCC_isr(void) 
 {
-   set_timer0(get_timer1()+6);
    
-   if(++led3 > 109){
+   
+   if(++led3 > 109 ){
       output_toggle(PIN_D5);
       led3 = 0;
    }
@@ -36,25 +36,29 @@ void  RTCC_isr(void)
       output_toggle(PIN_D3);
       led5 = 0;
    }
+   
+   set_timer0(get_timer1()+12);
+   
+   
 }
 
 
 #int_TIMER1
 void  TIMER1_isr(void) 
 {  
-   set_timer1(get_timer1() + 15536 );
    
-   if(++led1 >50){
+   
+   if(++led1 >50 /2){
       output_toggle(PIN_D7);
       led1 = 0;
    }
    
-   if(++led2 > 250){
-      output_toggle(PIN_D66);
+   if(++led2 > 250 /2 ){
+      output_toggle(PIN_D6);
       led2 = 0;
    }
    
-  
+  set_timer1(get_timer1() + 15536 );
 
 }
 
@@ -85,4 +89,35 @@ void main()
 
    while(TRUE);
 
+}*/
+
+#include <16F877A.h>
+#device adc = 8
+#FUSES NOWDT, HS, NOPUT, NOPROTECT, NODEBUG, BROWNOUT, NOLVP, NOCPD, NOWRT, NOWRT
+#use delay(clock = 20MHz)
+
+unsigned int16 cont1 = 0, cont2 = 0, cont3 = 0;
+
+#int_TIMER0
+void TIMER0_isr(void){
+   if(++cont1 >= 394)  { cont1 = 0; output_toggle(pin_B0) ; } 
+   if(++cont2 >= 1927) {cont2 = 0;output_toggle(pin_B1); }
+   if(++cont3 >= 822) {cont3 = 0; output_toggle(pin_B2); }
+}
+
+void main(){
+   setup_adc_ports(NO_ANALOGS);
+   setup_adc(ADC_OFF);
+   setup_psp(PSP_DISABLED);
+   setup_spi(SPI_SS_DISABLED);
+   setup_timer_0(RTCC_INTERNAL | RTCC_DIV_1); // overflow 51,2 us
+   setup_timer_1(T1_DISABLED);
+   setup_timer_2(T2_DISABLED,0,1);
+   setup_comparator(NC_NC_NC_NC);
+   setup_vref(FALSE);
+   enable_interrupts(INT_TIMER0);
+   enable_interrupts(GLOBAL);
+   //disable_interrupts(GLOBAL);
+   
+   while(true);
 }

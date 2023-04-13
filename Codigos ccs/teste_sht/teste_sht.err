@@ -1,0 +1,24 @@
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 18(14,15): Undefined identifier  -- I2C_init
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 40(14,15): Undefined identifier  -- I2C_start
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 41(15,16): Undefined identifier  -- I2C_Write
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 42(18,19): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 43(18,19): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 44(19,20): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 45(13,14): Undefined identifier  -- I2C_Stop
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 81(14,15): Undefined identifier  -- I2C_start
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 82(15,16): Undefined identifier  -- I2C_Write
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 83(14,15): Undefined identifier  -- I2C_Write
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 84(14,15): Undefined identifier  -- I2C_Write
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 85(13,14): Undefined identifier  -- I2C_Stop
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 126(14,15): Undefined identifier  -- I2C_start
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 127(15,16): Undefined identifier  -- I2C_Write
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 128(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 129(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 130(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 131(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 132(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 133(33,34): Undefined identifier  -- I2C_Read
+*** Error 12 "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\teste_sht\SHT3x.c" Line 134(13,14): Undefined identifier  -- I2C_Stop
+*** Error 12 "teste_sht.c" Line 43(14,21): Undefined identifier   WDT_off
+*** Error 12 "teste_sht.c" Line 44(20,21): Undefined identifier  -- setup_oscillator
+      23 Errors,  0 Warnings.

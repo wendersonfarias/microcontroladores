@@ -1,0 +1,8 @@
+*** Error 23 "C:\Program Files (x86)\PICC\Devices\16F877A.h" Line 2(8,9): Can not change device type this far into the code
+*** Error 48 "C:\Program Files (x86)\PICC\Devices\16F877A.h" Line 178(2,6): Expecting a (
+*** Error 48 "C:\Program Files (x86)\PICC\Devices\16F877A.h" Line 178(18,23): Expecting a (
+*** Error 43 "C:\Program Files (x86)\PICC\Devices\16F877A.h" Line 178(0,1): Expecting a declaration
+*** Error 23 "le_poten_serial.c" Line 3(8,9): Can not change device type this far into the code
+*** Error 48 "le_poten_serial.c" Line 3(9,12): Expecting a (
+*** Error 43 "le_poten_serial.c" Line 3(13,14): Expecting a declaration
+      7 Errors,  0 Warnings.

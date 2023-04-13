@@ -1,0 +1,148 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004     @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-024 MAIN.TS
+025-028 MAIN.HS
+029     MAIN.t
+02A     MAIN.h
+02B     @PRINTF_U_1200_62_63.P1
+02B-02E @SFTOI.P2
+02B-02C SHT3x_read_temp_humidity.RH_value
+02B     SHT3x_heater_state.state
+02C     @PRINTF_U_1200_62_63.P1
+02D-02E SHT3x_read_temp_humidity.T_value
+02D     @DIV88.P1
+02E     @DIV88.P1
+02F-034 SHT3x_read_temp_humidity.read_buffer
+02F     @DIV88.@SCRATCH1
+035-038 SHT3x_read_temp_humidity.t_tmp
+039-03C SHT3x_read_temp_humidity.h_tmp
+03D-03E SHT3x_write_command.value
+03D-03E SHT3x_calculate_crc8.value
+03D     @I2C_READ_1.P1
+03D     @delay_ms1.P2
+03D-040 @MUL3232.P3
+03D     make_word.hb
+03D     SHT3x_read_temp_humidity.@SCRATCH1
+03E     make_word.lb
+03E     @I2C_READ_1.@SCRATCH1
+03E     SHT3x_read_temp_humidity.@SCRATCH2
+03F-040 make_word.value
+03F     SHT3x_calculate_crc8.i
+03F-042 @SDTOF.P1
+03F     SHT3x_write_command.hb
+03F     @I2C_READ_1.@SCRATCH2
+03F     SHT3x_read_temp_humidity.@SCRATCH3
+040     SHT3x_write_command.lb
+040     SHT3x_calculate_crc8.j
+040     SHT3x_read_temp_humidity.@SCRATCH4
+041     SHT3x_calculate_crc8.crc_value
+041-044 @MUL3232.P1
+041     @I2C_WRITE_1.P2
+041     SHT3x_write_command.@SCRATCH1
+041     SHT3x_read_temp_humidity.@SCRATCH5
+042-045 @ADDFF.P1
+042-045 @FTOSD.P2
+042-045 @DTOF.P3
+042     SHT3x_write_command.@SCRATCH2
+042     SHT3x_calculate_crc8.@SCRATCH1
+042     SHT3x_read_temp_humidity.@SCRATCH6
+043-046 @DIVFF.P1
+043     @SDTOF.@SCRATCH1
+045     @MUL3232.@SCRATCH1
+046-049 @ADDFF.P1
+046     @MUL3232.@SCRATCH2
+046     @FTOSD.@SCRATCH1
+047-04A @DIVFF.P1
+047     @MUL3232.@SCRATCH3
+048     @MUL3232.@SCRATCH4
+049     @MUL3232.@SCRATCH5
+04A     @ADDFF.@SCRATCH1
+04B     @ADDFF.@SCRATCH2
+04B     @DIVFF.@SCRATCH1
+04C     @ADDFF.@SCRATCH3
+04C     @DIVFF.@SCRATCH2
+04D     @ADDFF.@SCRATCH4
+04D     @DIVFF.@SCRATCH3
+04E     @ADDFF.@SCRATCH5
+04E     @DIVFF.@SCRATCH4
+04F     @ADDFF.@SCRATCH6
+04F     @DIVFF.@SCRATCH5
+050     @ADDFF.@SCRATCH7
+050     @DIVFF.@SCRATCH6
+051     @ADDFF.@SCRATCH8
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+0004  @delay_ms1
+00D2  @I2C_READ_1
+0018  @I2C_WRITE_1
+013F  make_word
+009B  SHT3x_init
+00B6  SHT3x_reset
+00C0  SHT3x_heater_state
+005E  SHT3x_write_command
+0114  SHT3x_calculate_crc8
+0270  SHT3x_read_temp_humidity
+014E  @MUL3232
+0337  @DTOF
+0361  @ADDFF
+04A9  @FTOSD
+0178  @SDTOF
+01A6  @DIVFF
+05E6  MAIN
+057A  @SFTOI
+0599  @DIV88
+05AE  @PRINTF_U_1200_62_63
+05E6  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\trabalho_radio_serial\tx\
+
+Project Files:
+    tx.c
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+    ..\drives\SHT3x.c
+    ..\..\..\drives\SHT3x.h
+
+Units:
+    C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\trabalho_radio_serial\tx\tx (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      tx.err
+    Ext Symbols: tx.esym
+    INHX8:       tx.hex
+    Symbols:     tx.sym
+    List:        tx.lst
+    Debug/COFF:  tx.cof
+    Project:     tx.PJT
+    Call Tree:   tx.tre
+    Statistics:  tx.sta

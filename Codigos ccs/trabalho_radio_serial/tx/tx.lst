@@ -1,0 +1,1182 @@
+CCS PCM C Compiler, Version 4.104, 5967               13-abr-23 14:59
+
+               Filename: C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\trabalho_radio_serial\tx\tx.lst
+
+               ROM used: 1672 words (20%)
+                         Largest free fragment is 2048
+               RAM used: 16 (4%) at main() level
+                         55 (15%) worst case
+               Stack:    3 locations
+
+*
+0000:  MOVLW  05
+0001:  MOVWF  0A
+0002:  GOTO   5E6
+0003:  NOP
+.................... //#include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\trabalho_radio_serial\tx\tx.h" 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #device adc=10 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES HS                       //High speed Osc (> 4mhz for PCM/PCH) (>10mhz for PCD) 
+.................... #FUSES NOPUT                    //No Power Up Timer 
+.................... #FUSES NOPROTECT                //Code not protected from reading 
+.................... #FUSES NODEBUG                  //No Debug mode for ICD 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOCPD                    //No EE protection 
+.................... #FUSES NOWRT                    //Program memory not write protected 
+.................... #FUSES RESERVED                 //Used to set the reserved FUSE bits 
+....................  
+.................... #use delay(clock=20000000) 
+*
+0004:  MOVLW  3D
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+.................... #use I2C(MASTER, SDA = PIN_B6, SCL = PIN_B7, fast = 100000) 
+0018:  MOVLW  08
+0019:  MOVWF  78
+001A:  MOVLW  04
+001B:  MOVWF  77
+001C:  DECFSZ 77,F
+001D:  GOTO   01C
+001E:  BCF    06.7
+001F:  BSF    03.5
+0020:  BCF    06.7
+0021:  MOVLW  03
+0022:  MOVWF  77
+0023:  DECFSZ 77,F
+0024:  GOTO   023
+0025:  BCF    03.5
+0026:  RLF    41,F
+0027:  BCF    06.6
+0028:  BTFSS  03.0
+0029:  GOTO   02D
+002A:  BSF    03.5
+002B:  BSF    06.6
+002C:  BCF    03.5
+002D:  BTFSC  03.0
+002E:  GOTO   032
+002F:  BSF    03.5
+0030:  BCF    06.6
+0031:  BCF    03.5
+0032:  BSF    03.5
+0033:  BSF    06.7
+0034:  BCF    03.5
+0035:  BTFSS  06.7
+0036:  GOTO   035
+0037:  DECFSZ 78,F
+0038:  GOTO   01A
+0039:  MOVLW  04
+003A:  MOVWF  77
+003B:  DECFSZ 77,F
+003C:  GOTO   03B
+003D:  BCF    06.7
+003E:  BSF    03.5
+003F:  BCF    06.7
+0040:  NOP
+0041:  BSF    06.6
+0042:  MOVLW  03
+0043:  MOVWF  77
+0044:  DECFSZ 77,F
+0045:  GOTO   044
+0046:  MOVLW  03
+0047:  MOVWF  77
+0048:  DECFSZ 77,F
+0049:  GOTO   048
+004A:  BSF    06.7
+004B:  BCF    03.5
+004C:  BTFSS  06.7
+004D:  GOTO   04C
+004E:  CLRF   78
+004F:  MOVLW  03
+0050:  MOVWF  77
+0051:  DECFSZ 77,F
+0052:  GOTO   051
+0053:  BTFSC  06.6
+0054:  BSF    78.0
+0055:  BCF    06.7
+0056:  BSF    03.5
+0057:  BCF    06.7
+0058:  BCF    03.5
+0059:  BCF    06.6
+005A:  BSF    03.5
+005B:  BCF    06.6
+005C:  BCF    03.5
+005D:  RETURN
+*
+00D2:  MOVLW  08
+00D3:  MOVWF  3E
+00D4:  MOVF   77,W
+00D5:  MOVWF  3F
+00D6:  BSF    03.5
+00D7:  BSF    06.6
+00D8:  MOVLW  03
+00D9:  MOVWF  77
+00DA:  DECFSZ 77,F
+00DB:  GOTO   0DA
+00DC:  BSF    06.7
+00DD:  BCF    03.5
+00DE:  BTFSS  06.7
+00DF:  GOTO   0DE
+00E0:  BTFSC  06.6
+00E1:  BSF    03.0
+00E2:  BTFSS  06.6
+00E3:  BCF    03.0
+00E4:  RLF    78,F
+00E5:  MOVLW  04
+00E6:  MOVWF  77
+00E7:  DECFSZ 77,F
+00E8:  GOTO   0E7
+00E9:  BSF    03.5
+00EA:  BCF    06.7
+00EB:  BCF    03.5
+00EC:  BCF    06.7
+00ED:  DECFSZ 3E,F
+00EE:  GOTO   0D6
+00EF:  BSF    03.5
+00F0:  BSF    06.6
+00F1:  MOVLW  03
+00F2:  MOVWF  77
+00F3:  DECFSZ 77,F
+00F4:  GOTO   0F3
+00F5:  BCF    03.5
+00F6:  BCF    06.6
+00F7:  MOVF   3F,W
+00F8:  BTFSC  03.2
+00F9:  GOTO   0FD
+00FA:  BSF    03.5
+00FB:  BCF    06.6
+00FC:  BCF    03.5
+00FD:  NOP
+00FE:  BSF    03.5
+00FF:  BSF    06.7
+0100:  BCF    03.5
+0101:  BTFSS  06.7
+0102:  GOTO   101
+0103:  MOVLW  04
+0104:  MOVWF  77
+0105:  DECFSZ 77,F
+0106:  GOTO   105
+0107:  BCF    06.7
+0108:  BSF    03.5
+0109:  BCF    06.7
+010A:  MOVLW  03
+010B:  MOVWF  77
+010C:  DECFSZ 77,F
+010D:  GOTO   10C
+010E:  BCF    03.5
+010F:  BCF    06.6
+0110:  BSF    03.5
+0111:  BCF    06.6
+0112:  BCF    03.5
+0113:  RETURN
+.................... #use rs232(baud=1200,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,stream=serial1) 
+....................  
+.................... #include "C:\Users\wende\Desktop\MICRO\microcontroladores\Codigos ccs\trabalho_radio_serial\drives\SHT3x.c" 
+.................... #include "C:\Users\wende\Desktop\MICRO\microcontroladores\drives\SHT3x.h" 
+.................... #define I2C_bus_speed                           100000 
+....................  
+.................... #define SHT3x_I2C_address                       0x88 
+....................  
+.................... #define SHT3x_MEAS_HIGH_REP_CLK_STRETCH         0x2C06  
+.................... #define SHT3x_MEAS_MED_REP_CLK_STRETCH          0x2C0D 
+.................... #define SHT3x_MEAS_LOW_REP_CLK_STRETCH          0x2C10 
+.................... #define SHT3x_MEAS_HIGH_REP                     0x2400 
+.................... #define SHT3x_MEAS_MED_REP                      0x240B 
+.................... #define SHT3x_MEAS_LOW_REP                      0x2416  
+.................... #define SHT3x_READ_STATUS                       0xF32D   
+.................... #define SHT3x_CLEAR_STATUS                      0x3041 
+.................... #define SHT3x_SOFT_RESET                        0x30A2 
+.................... #define SHT3x_ENABLE_INTERNAL_HEATER            0x306D     
+.................... #define SHT3x_DISABLE_INTERNAL_HEATER           0x3066  
+....................  
+.................... #define SHT3x_heater_on                         0x00 
+.................... #define SHT3x_heater_off                        0x01 
+....................  
+.................... #define SHT3x_ERROR                             0x01 
+.................... #define SHT3x_NO_ERROR                          0x00 
+....................  
+....................  
+.................... unsigned long make_word(unsigned char hb, unsigned char lb); 
+.................... void SHT3x_init(void); 
+.................... void SHT3x_reset(void); 
+.................... unsigned long SHT3x_read_status_reg(void); 
+.................... void SHT3x_heater_state(unsigned char state); 
+.................... void SHT3x_write_command(unsigned long value); 
+.................... unsigned char SHT3x_calculate_crc8(unsigned char *value); 
+.................... unsigned char SHT3x_read_temp_humidity(float *RH_value, float *T_value); 
+....................  
+....................  
+....................  
+.................... unsigned long make_word(unsigned char hb, unsigned char lb) 
+.................... { 
+*
+013F:  CLRF   40
+0140:  CLRF   3F
+....................     unsigned long value = 0x0000; 
+....................  
+....................     value = hb; 
+0141:  CLRF   40
+0142:  MOVF   3D,W
+0143:  MOVWF  3F
+....................     value <<= 0x08; 
+0144:  MOVF   3F,W
+0145:  MOVWF  40
+0146:  CLRF   3F
+....................     value |= lb; 
+0147:  MOVF   3E,W
+0148:  IORWF  3F,F
+....................  
+....................     return value; 
+0149:  MOVF   3F,W
+014A:  MOVWF  78
+014B:  MOVF   40,W
+014C:  MOVWF  79
+.................... } 
+014D:  RETURN
+....................  
+....................  
+.................... void SHT3x_init(void) 
+.................... { 
+....................     
+....................     i2c_start(TRUE);  
+*
+009B:  BSF    03.5
+009C:  BSF    06.6
+009D:  MOVLW  04
+009E:  MOVWF  77
+009F:  DECFSZ 77,F
+00A0:  GOTO   09F
+00A1:  BSF    06.7
+00A2:  MOVLW  03
+00A3:  MOVWF  77
+00A4:  DECFSZ 77,F
+00A5:  GOTO   0A4
+00A6:  BCF    03.5
+00A7:  BCF    06.6
+00A8:  BSF    03.5
+00A9:  BCF    06.6
+00AA:  MOVLW  04
+00AB:  MOVWF  77
+00AC:  DECFSZ 77,F
+00AD:  GOTO   0AC
+00AE:  BCF    03.5
+00AF:  BCF    06.7
+00B0:  BSF    03.5
+00B1:  BCF    06.7
+....................     delay_ms(100); 
+00B2:  MOVLW  64
+00B3:  BCF    03.5
+00B4:  MOVWF  3D
+00B5:  CALL   004
+....................     SHT3x_reset(); 
+....................     SHT3x_heater_state(SHT3x_heater_off); 
+*
+00BE:  MOVLW  01
+00BF:  MOVWF  2B
+.................... } 
+*
+00CF:  BCF    0A.3
+00D0:  BCF    0A.4
+00D1:  GOTO   650 (RETURN)
+....................  
+....................  
+.................... void SHT3x_reset(void) 
+.................... { 
+....................     SHT3x_write_command(SHT3x_SOFT_RESET); 
+*
+00B6:  MOVLW  30
+00B7:  MOVWF  3E
+00B8:  MOVLW  A2
+00B9:  MOVWF  3D
+00BA:  CALL   05E
+....................     delay_ms(15); 
+00BB:  MOVLW  0F
+00BC:  MOVWF  3D
+00BD:  CALL   004
+.................... } 
+....................  
+....................  
+.................... unsigned long SHT3x_read_status_reg(void)  
+.................... { 
+....................     unsigned char crc = 0x00; 
+....................     unsigned char lb = 0x00; 
+....................     unsigned long hb = 0x0000; 
+....................  
+....................     SHT3x_write_command(SHT3x_READ_STATUS); 
+....................  
+....................     I2C_start(); 
+....................     I2C_Write(SHT3x_I2C_address | 1); 
+....................     hb = I2C_Read(1); 
+....................     lb = I2C_Read(1); 
+....................     crc = I2C_Read(0); 
+....................     I2C_Stop(); 
+....................  
+....................     hb <<= 0x08; 
+....................     hb |= lb; 
+....................  
+....................     return hb; 
+.................... } 
+....................  
+....................  
+.................... void SHT3x_heater_state(unsigned char state) 
+.................... { 
+....................     switch(state) 
+....................     { 
+*
+00C0:  MOVF   2B,W
+00C1:  BTFSS  03.2
+00C2:  GOTO   0C9
+....................         case SHT3x_heater_on: 
+....................         { 
+....................             SHT3x_write_command(SHT3x_ENABLE_INTERNAL_HEATER); 
+00C3:  MOVLW  30
+00C4:  MOVWF  3E
+00C5:  MOVLW  6D
+00C6:  MOVWF  3D
+00C7:  CALL   05E
+....................             break; 
+00C8:  GOTO   0CF
+....................         } 
+....................  
+....................         default: 
+....................         { 
+....................             SHT3x_write_command(SHT3x_DISABLE_INTERNAL_HEATER); 
+00C9:  MOVLW  30
+00CA:  MOVWF  3E
+00CB:  MOVLW  66
+00CC:  MOVWF  3D
+00CD:  CALL   05E
+....................             break; 
+00CE:  GOTO   0CF
+....................         } 
+....................     }; 
+.................... } 
+....................  
+....................  
+.................... void SHT3x_write_command(unsigned long value) 
+.................... { 
+*
+005E:  CLRF   3F
+005F:  CLRF   40
+....................     unsigned char hb = 0x00; 
+....................     unsigned char lb = 0x00; 
+....................  
+....................     lb = (value & 0x00FF); 
+0060:  MOVF   3D,W
+0061:  MOVWF  40
+....................     hb = ((value & 0xFF00) >> 0x08); 
+0062:  CLRF   41
+0063:  MOVF   3E,W
+0064:  MOVWF  3F
+....................      
+....................     I2C_Start(); 
+0065:  BSF    03.5
+0066:  BSF    06.6
+0067:  MOVLW  04
+0068:  MOVWF  77
+0069:  DECFSZ 77,F
+006A:  GOTO   069
+006B:  BSF    06.7
+006C:  MOVLW  03
+006D:  MOVWF  77
+006E:  DECFSZ 77,F
+006F:  GOTO   06E
+0070:  BCF    03.5
+0071:  BCF    06.6
+0072:  BSF    03.5
+0073:  BCF    06.6
+0074:  MOVLW  04
+0075:  MOVWF  77
+0076:  DECFSZ 77,F
+0077:  GOTO   076
+0078:  BCF    03.5
+0079:  BCF    06.7
+007A:  BSF    03.5
+007B:  BCF    06.7
+....................     I2C_Write(SHT3x_I2C_address); 
+007C:  MOVLW  88
+007D:  BCF    03.5
+007E:  MOVWF  41
+007F:  CALL   018
+....................     I2C_Write(hb); 
+0080:  MOVF   3F,W
+0081:  MOVWF  41
+0082:  CALL   018
+....................     I2C_Write(lb); 
+0083:  MOVF   40,W
+0084:  MOVWF  41
+0085:  CALL   018
+....................     I2C_Stop(); 
+0086:  BSF    03.5
+0087:  BCF    06.6
+0088:  NOP
+0089:  BSF    06.7
+008A:  BCF    03.5
+008B:  BTFSS  06.7
+008C:  GOTO   08B
+008D:  MOVLW  04
+008E:  MOVWF  77
+008F:  DECFSZ 77,F
+0090:  GOTO   08F
+0091:  GOTO   092
+0092:  NOP
+0093:  BSF    03.5
+0094:  BSF    06.6
+0095:  MOVLW  04
+0096:  MOVWF  77
+0097:  DECFSZ 77,F
+0098:  GOTO   097
+.................... } 
+0099:  BCF    03.5
+009A:  RETURN
+....................  
+....................  
+.................... unsigned char SHT3x_calculate_crc8(unsigned char *value)  
+.................... { 
+*
+0114:  CLRF   3F
+0115:  CLRF   40
+0116:  MOVLW  FF
+0117:  MOVWF  41
+....................     signed char i = 0x00; 
+....................     signed char j = 0x00; 
+....................     unsigned char crc_value = 0xFF; 
+....................  
+....................     for(i = 0x00; i < 0x02; i++) 
+0118:  CLRF   3F
+0119:  BTFSC  3F.7
+011A:  GOTO   11F
+011B:  MOVF   3F,W
+011C:  SUBLW  01
+011D:  BTFSS  03.0
+011E:  GOTO   13C
+....................     { 
+....................         crc_value ^= value[i]; 
+011F:  MOVF   3F,W
+0120:  ADDWF  3D,W
+0121:  MOVWF  04
+0122:  BCF    03.7
+0123:  BTFSC  3E.0
+0124:  BSF    03.7
+0125:  MOVF   00,W
+0126:  XORWF  41,F
+....................  
+....................         for(j = 0x08; j > 0x00; --j) 
+0127:  MOVLW  08
+0128:  MOVWF  40
+0129:  BTFSC  40.7
+012A:  GOTO   13A
+012B:  MOVF   40,W
+012C:  SUBLW  00
+012D:  BTFSC  03.0
+012E:  GOTO   13A
+....................         { 
+....................            if(crc_value & 0x80) 
+012F:  BTFSS  41.7
+0130:  GOTO   136
+....................            { 
+....................                crc_value = ((crc_value << 1) ^ 0x131); 
+0131:  BCF    03.0
+0132:  RLF    41,W
+0133:  XORLW  31
+0134:  MOVWF  41
+....................            } 
+....................            else 
+0135:  GOTO   138
+....................            { 
+....................                crc_value <<= 1; 
+0136:  BCF    03.0
+0137:  RLF    41,F
+....................            } 
+....................         }; 
+0138:  DECF   40,F
+0139:  GOTO   129
+....................     }; 
+013A:  INCF   3F,F
+013B:  GOTO   119
+....................  
+....................     return crc_value; 
+013C:  MOVF   41,W
+013D:  MOVWF  78
+.................... } 
+013E:  RETURN
+....................  
+....................  
+.................... unsigned char SHT3x_read_temp_humidity(float *RH_value, float *T_value) 
+.................... { 
+*
+0276:  CLRF   38
+0277:  CLRF   37
+0278:  CLRF   36
+0279:  CLRF   35
+027A:  CLRF   3C
+027B:  CLRF   3B
+027C:  CLRF   3A
+027D:  CLRF   39
+....................     unsigned char read_buffer[0x06] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; 
+*
+0270:  CLRF   2F
+0271:  CLRF   30
+0272:  CLRF   31
+0273:  CLRF   32
+0274:  CLRF   33
+0275:  CLRF   34
+....................  
+....................     signed long long t_tmp = 0x000000000; 
+....................     signed long long h_tmp = 0x000000000; 
+....................  
+....................     SHT3x_write_command(SHT3x_MEAS_HIGH_REP); 
+*
+027E:  MOVLW  24
+027F:  MOVWF  3E
+0280:  CLRF   3D
+0281:  CALL   05E
+....................     delay_ms(20); 
+0282:  MOVLW  14
+0283:  MOVWF  3D
+0284:  CALL   004
+....................      
+....................     I2C_Start(); 
+0285:  BSF    03.5
+0286:  BSF    06.6
+0287:  MOVLW  04
+0288:  MOVWF  77
+0289:  DECFSZ 77,F
+028A:  GOTO   289
+028B:  BSF    06.7
+028C:  MOVLW  03
+028D:  MOVWF  77
+028E:  DECFSZ 77,F
+028F:  GOTO   28E
+0290:  BCF    03.5
+0291:  BCF    06.6
+0292:  BSF    03.5
+0293:  BCF    06.6
+0294:  MOVLW  04
+0295:  MOVWF  77
+0296:  DECFSZ 77,F
+0297:  GOTO   296
+0298:  BCF    03.5
+0299:  BCF    06.7
+029A:  BSF    03.5
+029B:  BCF    06.7
+....................     I2C_Write(SHT3x_I2C_address | 1); 
+029C:  MOVLW  89
+029D:  BCF    03.5
+029E:  MOVWF  41
+029F:  CALL   018
+....................     read_buffer[0x00] = I2C_Read(1); 
+02A0:  MOVLW  01
+02A1:  MOVWF  77
+02A2:  CALL   0D2
+02A3:  MOVF   78,W
+02A4:  MOVWF  2F
+....................     read_buffer[0x01] = I2C_Read(1); 
+02A5:  MOVLW  01
+02A6:  MOVWF  77
+02A7:  CALL   0D2
+02A8:  MOVF   78,W
+02A9:  MOVWF  30
+....................     read_buffer[0x02] = I2C_Read(1); 
+02AA:  MOVLW  01
+02AB:  MOVWF  77
+02AC:  CALL   0D2
+02AD:  MOVF   78,W
+02AE:  MOVWF  31
+....................     read_buffer[0x03] = I2C_Read(1); 
+02AF:  MOVLW  01
+02B0:  MOVWF  77
+02B1:  CALL   0D2
+02B2:  MOVF   78,W
+02B3:  MOVWF  32
+....................     read_buffer[0x04] = I2C_Read(1); 
+02B4:  MOVLW  01
+02B5:  MOVWF  77
+02B6:  CALL   0D2
+02B7:  MOVF   78,W
+02B8:  MOVWF  33
+....................     read_buffer[0x05] = I2C_Read(0); 
+02B9:  CLRF   77
+02BA:  CALL   0D2
+02BB:  MOVF   78,W
+02BC:  MOVWF  34
+....................     I2C_Stop(); 
+02BD:  BSF    03.5
+02BE:  BCF    06.6
+02BF:  NOP
+02C0:  BSF    06.7
+02C1:  BCF    03.5
+02C2:  BTFSS  06.7
+02C3:  GOTO   2C2
+02C4:  MOVLW  04
+02C5:  MOVWF  77
+02C6:  DECFSZ 77,F
+02C7:  GOTO   2C6
+02C8:  GOTO   2C9
+02C9:  NOP
+02CA:  BSF    03.5
+02CB:  BSF    06.6
+02CC:  MOVLW  04
+02CD:  MOVWF  77
+02CE:  DECFSZ 77,F
+02CF:  GOTO   2CE
+....................  
+....................     if((read_buffer[0x02] != SHT3x_calculate_crc8(read_buffer)) || (read_buffer[0x05] != SHT3x_calculate_crc8((read_buffer + 0x03)))) 
+02D0:  BCF    03.5
+02D1:  CLRF   3E
+02D2:  MOVLW  2F
+02D3:  MOVWF  3D
+02D4:  CALL   114
+02D5:  MOVF   78,W
+02D6:  SUBWF  31,W
+02D7:  BTFSS  03.2
+02D8:  GOTO   2E1
+02D9:  CLRF   3E
+02DA:  MOVLW  32
+02DB:  MOVWF  3D
+02DC:  CALL   114
+02DD:  MOVF   78,W
+02DE:  SUBWF  34,W
+02DF:  BTFSC  03.2
+02E0:  GOTO   2E4
+....................     { 
+....................         return SHT3x_ERROR; 
+02E1:  MOVLW  01
+02E2:  MOVWF  78
+02E3:  GOTO   577
+....................     } 
+....................  
+....................     t_tmp = make_word(read_buffer[0x00], read_buffer[0x01]); 
+02E4:  MOVF   2F,W
+02E5:  MOVWF  3D
+02E6:  MOVF   30,W
+02E7:  MOVWF  3E
+02E8:  CALL   13F
+02E9:  MOVF   78,W
+02EA:  MOVWF  77
+02EB:  MOVF   79,W
+02EC:  MOVWF  78
+02ED:  CLRF   79
+02EE:  CLRF   7A
+02EF:  MOVF   7A,W
+02F0:  MOVWF  38
+02F1:  MOVF   79,W
+02F2:  MOVWF  37
+02F3:  MOVF   78,W
+02F4:  MOVWF  36
+02F5:  MOVF   77,W
+02F6:  MOVWF  35
+....................     t_tmp = (((4375 * t_tmp) >> 14) - 4500.0); 
+02F7:  CLRF   40
+02F8:  CLRF   3F
+02F9:  MOVLW  11
+02FA:  MOVWF  3E
+02FB:  MOVLW  17
+02FC:  MOVWF  3D
+02FD:  MOVF   38,W
+02FE:  MOVWF  44
+02FF:  MOVF   37,W
+0300:  MOVWF  43
+0301:  MOVF   36,W
+0302:  MOVWF  42
+0303:  MOVF   35,W
+0304:  MOVWF  41
+0305:  CALL   14E
+0306:  MOVF   7A,W
+0307:  MOVWF  40
+0308:  MOVF   79,W
+0309:  MOVWF  3F
+030A:  MOVF   78,W
+030B:  MOVWF  3E
+030C:  MOVF   77,W
+030D:  MOVWF  3D
+030E:  MOVF   3E,W
+030F:  MOVWF  3D
+0310:  MOVF   3F,W
+0311:  MOVWF  3E
+0312:  MOVF   40,W
+0313:  MOVWF  3F
+0314:  CLRF   40
+0315:  RRF    40,F
+0316:  RRF    3F,F
+0317:  RRF    3E,F
+0318:  RRF    3D,F
+0319:  RRF    40,F
+031A:  RRF    3F,F
+031B:  RRF    3E,F
+031C:  RRF    3D,F
+031D:  RRF    40,F
+031E:  RRF    3F,F
+031F:  RRF    3E,F
+0320:  RRF    3D,F
+0321:  RRF    40,F
+0322:  RRF    3F,F
+0323:  RRF    3E,F
+0324:  RRF    3D,F
+0325:  RRF    40,F
+0326:  RRF    3F,F
+0327:  RRF    3E,F
+0328:  RRF    3D,F
+0329:  RRF    40,F
+032A:  RRF    3F,F
+032B:  RRF    3E,F
+032C:  RRF    3D,F
+032D:  MOVLW  03
+032E:  ANDWF  40,F
+032F:  MOVF   40,W
+0330:  MOVWF  45
+0331:  MOVF   3F,W
+0332:  MOVWF  44
+0333:  MOVF   3E,W
+0334:  MOVWF  43
+0335:  MOVF   3D,W
+0336:  MOVWF  42
+*
+0351:  BSF    03.1
+0352:  MOVF   7A,W
+0353:  MOVWF  45
+0354:  MOVF   79,W
+0355:  MOVWF  44
+0356:  MOVF   78,W
+0357:  MOVWF  43
+0358:  MOVF   77,W
+0359:  MOVWF  42
+035A:  CLRF   49
+035B:  MOVLW  A0
+035C:  MOVWF  48
+035D:  MOVLW  0C
+035E:  MOVWF  47
+035F:  MOVLW  8B
+0360:  MOVWF  46
+*
+04A1:  MOVF   7A,W
+04A2:  MOVWF  45
+04A3:  MOVF   79,W
+04A4:  MOVWF  44
+04A5:  MOVF   78,W
+04A6:  MOVWF  43
+04A7:  MOVF   77,W
+04A8:  MOVWF  42
+*
+04C7:  MOVF   7A,W
+04C8:  MOVWF  38
+04C9:  MOVF   79,W
+04CA:  MOVWF  37
+04CB:  MOVF   78,W
+04CC:  MOVWF  36
+04CD:  MOVF   77,W
+04CE:  MOVWF  35
+....................     *T_value = (((float)t_tmp) / 100.0); 
+04CF:  MOVF   2E,W
+04D0:  MOVWF  7A
+04D1:  MOVF   2D,W
+04D2:  MOVWF  04
+04D3:  BCF    03.7
+04D4:  BTFSC  2E.0
+04D5:  BSF    03.7
+04D6:  MOVF   38,W
+04D7:  MOVWF  42
+04D8:  MOVF   37,W
+04D9:  MOVWF  41
+04DA:  MOVF   36,W
+04DB:  MOVWF  40
+04DC:  MOVF   35,W
+04DD:  MOVWF  3F
+04DE:  CALL   178
+04DF:  MOVF   77,W
+04E0:  MOVWF  3F
+04E1:  MOVF   78,W
+04E2:  MOVWF  40
+04E3:  MOVF   79,W
+04E4:  MOVWF  41
+04E5:  MOVF   7A,W
+04E6:  MOVWF  42
+04E7:  MOVWF  46
+04E8:  MOVF   79,W
+04E9:  MOVWF  45
+04EA:  MOVF   78,W
+04EB:  MOVWF  44
+04EC:  MOVF   77,W
+04ED:  MOVWF  43
+04EE:  CLRF   4A
+04EF:  CLRF   49
+04F0:  MOVLW  48
+04F1:  MOVWF  48
+04F2:  MOVLW  85
+04F3:  MOVWF  47
+04F4:  CALL   1A6
+04F5:  MOVF   77,W
+04F6:  MOVWF  00
+04F7:  INCF   04,F
+04F8:  MOVF   78,W
+04F9:  MOVWF  00
+04FA:  INCF   04,F
+04FB:  MOVF   79,W
+04FC:  MOVWF  00
+04FD:  INCF   04,F
+04FE:  MOVF   7A,W
+04FF:  MOVWF  00
+....................  
+....................     h_tmp = make_word(read_buffer[0x03], read_buffer[0x04]); 
+0500:  MOVF   32,W
+0501:  MOVWF  3D
+0502:  MOVF   33,W
+0503:  MOVWF  3E
+0504:  CALL   13F
+0505:  MOVF   78,W
+0506:  MOVWF  77
+0507:  MOVF   79,W
+0508:  MOVWF  78
+0509:  CLRF   79
+050A:  CLRF   7A
+050B:  MOVF   7A,W
+050C:  MOVWF  3C
+050D:  MOVF   79,W
+050E:  MOVWF  3B
+050F:  MOVF   78,W
+0510:  MOVWF  3A
+0511:  MOVF   77,W
+0512:  MOVWF  39
+....................     h_tmp = ((625 * h_tmp) >> 12); 
+0513:  CLRF   40
+0514:  CLRF   3F
+0515:  MOVLW  02
+0516:  MOVWF  3E
+0517:  MOVLW  71
+0518:  MOVWF  3D
+0519:  MOVF   3C,W
+051A:  MOVWF  44
+051B:  MOVF   3B,W
+051C:  MOVWF  43
+051D:  MOVF   3A,W
+051E:  MOVWF  42
+051F:  MOVF   39,W
+0520:  MOVWF  41
+0521:  CALL   14E
+0522:  MOVF   7A,W
+0523:  MOVWF  40
+0524:  MOVF   79,W
+0525:  MOVWF  3F
+0526:  MOVF   78,W
+0527:  MOVWF  3E
+0528:  MOVF   77,W
+0529:  MOVWF  3D
+052A:  CLRF   7A
+052B:  RRF    40,W
+052C:  MOVWF  79
+052D:  RRF    3F,W
+052E:  MOVWF  78
+052F:  RRF    3E,W
+0530:  MOVWF  77
+0531:  RRF    79,F
+0532:  RRF    78,F
+0533:  RRF    77,F
+0534:  RRF    79,F
+0535:  RRF    78,F
+0536:  RRF    77,F
+0537:  RRF    79,F
+0538:  RRF    78,F
+0539:  RRF    77,F
+053A:  MOVLW  0F
+053B:  ANDWF  79,F
+053C:  MOVF   7A,W
+053D:  MOVWF  3C
+053E:  MOVF   79,W
+053F:  MOVWF  3B
+0540:  MOVF   78,W
+0541:  MOVWF  3A
+0542:  MOVF   77,W
+0543:  MOVWF  39
+....................     *RH_value = (((float)h_tmp) / 100.0); 
+0544:  MOVF   2C,W
+0545:  MOVWF  7A
+0546:  MOVF   2B,W
+0547:  MOVWF  04
+0548:  BCF    03.7
+0549:  BTFSC  2C.0
+054A:  BSF    03.7
+054B:  MOVF   3C,W
+054C:  MOVWF  42
+054D:  MOVF   3B,W
+054E:  MOVWF  41
+054F:  MOVF   3A,W
+0550:  MOVWF  40
+0551:  MOVF   39,W
+0552:  MOVWF  3F
+0553:  CALL   178
+0554:  MOVF   77,W
+0555:  MOVWF  3F
+0556:  MOVF   78,W
+0557:  MOVWF  40
+0558:  MOVF   79,W
+0559:  MOVWF  41
+055A:  MOVF   7A,W
+055B:  MOVWF  42
+055C:  MOVWF  46
+055D:  MOVF   79,W
+055E:  MOVWF  45
+055F:  MOVF   78,W
+0560:  MOVWF  44
+0561:  MOVF   77,W
+0562:  MOVWF  43
+0563:  CLRF   4A
+0564:  CLRF   49
+0565:  MOVLW  48
+0566:  MOVWF  48
+0567:  MOVLW  85
+0568:  MOVWF  47
+0569:  CALL   1A6
+056A:  MOVF   77,W
+056B:  MOVWF  00
+056C:  INCF   04,F
+056D:  MOVF   78,W
+056E:  MOVWF  00
+056F:  INCF   04,F
+0570:  MOVF   79,W
+0571:  MOVWF  00
+0572:  INCF   04,F
+0573:  MOVF   7A,W
+0574:  MOVWF  00
+....................      
+....................     return SHT3x_NO_ERROR; 
+0575:  MOVLW  00
+0576:  MOVWF  78
+.................... } 
+0577:  BCF    0A.3
+0578:  BCF    0A.4
+0579:  GOTO   65A (RETURN)
+....................  
+.................... void main() 
+.................... { 
+*
+05E6:  CLRF   04
+05E7:  BCF    03.7
+05E8:  MOVLW  1F
+05E9:  ANDWF  03,F
+05EA:  MOVLW  FF
+05EB:  BSF    03.5
+05EC:  MOVWF  19
+05ED:  MOVLW  A2
+05EE:  MOVWF  18
+05EF:  MOVLW  90
+05F0:  BCF    03.5
+05F1:  MOVWF  18
+05F2:  BSF    03.5
+05F3:  BSF    1F.0
+05F4:  BSF    1F.1
+05F5:  BSF    1F.2
+05F6:  BCF    1F.3
+05F7:  MOVLW  07
+05F8:  MOVWF  1C
+*
+05FC:  CLRF   24
+05FD:  CLRF   23
+05FE:  CLRF   22
+05FF:  CLRF   21
+0600:  CLRF   28
+0601:  CLRF   27
+0602:  CLRF   26
+0603:  CLRF   25
+....................  
+....................    float TS = 0.0;     
+....................    float HS = 0.0;    
+....................    int8 t; 
+....................    int8 h; 
+....................  
+....................     
+....................    setup_adc_ports(NO_ANALOGS); 
+0604:  BSF    03.5
+0605:  BSF    1F.0
+0606:  BSF    1F.1
+0607:  BSF    1F.2
+0608:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_DIV_2); 
+0609:  BCF    1F.6
+060A:  BCF    03.5
+060B:  BCF    1F.6
+060C:  BCF    1F.7
+060D:  BSF    03.5
+060E:  BSF    1F.7
+060F:  BCF    03.5
+0610:  BSF    1F.0
+....................    setup_psp(PSP_DISABLED); 
+0611:  BSF    03.5
+0612:  BCF    09.4
+....................    setup_spi(SPI_SS_DISABLED); 
+0613:  BCF    03.5
+0614:  BCF    14.5
+0615:  BCF    20.5
+0616:  MOVF   20,W
+0617:  BSF    03.5
+0618:  MOVWF  07
+0619:  BCF    03.5
+061A:  BSF    20.4
+061B:  MOVF   20,W
+061C:  BSF    03.5
+061D:  MOVWF  07
+061E:  BCF    03.5
+061F:  BCF    20.3
+0620:  MOVF   20,W
+0621:  BSF    03.5
+0622:  MOVWF  07
+0623:  MOVLW  01
+0624:  BCF    03.5
+0625:  MOVWF  14
+0626:  MOVLW  00
+0627:  BSF    03.5
+0628:  MOVWF  14
+....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1); 
+0629:  MOVF   01,W
+062A:  ANDLW  C7
+062B:  IORLW  08
+062C:  MOVWF  01
+....................    setup_timer_1(T1_DISABLED); 
+062D:  BCF    03.5
+062E:  CLRF   10
+....................    setup_timer_2(T2_DISABLED,0,1); 
+062F:  MOVLW  00
+0630:  MOVWF  78
+0631:  MOVWF  12
+0632:  MOVLW  00
+0633:  BSF    03.5
+0634:  MOVWF  12
+....................    setup_comparator(NC_NC_NC_NC); 
+0635:  MOVLW  07
+0636:  MOVWF  1C
+0637:  MOVF   05,W
+0638:  MOVWF  05
+0639:  MOVLW  10
+063A:  MOVWF  77
+063B:  DECFSZ 77,F
+063C:  GOTO   63B
+063D:  NOP
+063E:  MOVF   1C,W
+063F:  BCF    03.5
+0640:  BCF    0D.6
+....................    setup_vref(FALSE); 
+0641:  BSF    03.5
+0642:  CLRF   1D
+....................     
+....................    set_adc_channel(0); 
+0643:  MOVLW  00
+0644:  MOVWF  78
+0645:  BCF    03.5
+0646:  MOVF   1F,W
+0647:  ANDLW  C7
+0648:  IORWF  78,W
+0649:  MOVWF  1F
+....................    delay_us(100); 
+064A:  MOVLW  A6
+064B:  MOVWF  77
+064C:  DECFSZ 77,F
+064D:  GOTO   64C
+064E:  NOP
+....................     
+....................    SHT3x_init();  
+064F:  GOTO   09B
+....................  
+....................    delay_ms(100); 
+0650:  MOVLW  64
+0651:  MOVWF  3D
+0652:  CALL   004
+....................  
+....................    while(TRUE){ 
+....................     
+....................        SHT3x_read_temp_humidity(&HS, &TS); 
+0653:  CLRF   2C
+0654:  MOVLW  25
+0655:  MOVWF  2B
+0656:  CLRF   2E
+0657:  MOVLW  21
+0658:  MOVWF  2D
+0659:  GOTO   270
+....................        
+....................         
+....................        t = (int8)TS; //conversao float para int8; ex. 30.28 -> 30; 
+065A:  MOVF   24,W
+065B:  MOVWF  2E
+065C:  MOVF   23,W
+065D:  MOVWF  2D
+065E:  MOVF   22,W
+065F:  MOVWF  2C
+0660:  MOVF   21,W
+0661:  MOVWF  2B
+0662:  CALL   57A
+0663:  MOVF   78,W
+0664:  MOVWF  29
+....................         
+....................        h = (int8)HS; //conversao float para int8; ex. 80.32 -> 80; 
+0665:  MOVF   28,W
+0666:  MOVWF  2E
+0667:  MOVF   27,W
+0668:  MOVWF  2D
+0669:  MOVF   26,W
+066A:  MOVWF  2C
+066B:  MOVF   25,W
+066C:  MOVWF  2B
+066D:  CALL   57A
+066E:  MOVF   78,W
+066F:  MOVWF  2A
+....................  
+....................         //envia os dados via serial do pic,  
+....................         //envia a temperatura e logo depois umidade; 
+....................         // e uma quebra de linha para sinalizar fim de transmissao 
+....................          
+....................        fprintf(serial1,"%u %u P", t,h); 
+0670:  MOVF   29,W
+0671:  MOVWF  2B
+0672:  MOVLW  1B
+0673:  MOVWF  2C
+0674:  CALL   5AE
+0675:  MOVLW  20
+0676:  BTFSS  0C.4
+0677:  GOTO   676
+0678:  MOVWF  19
+0679:  MOVF   2A,W
+067A:  MOVWF  2B
+067B:  MOVLW  1B
+067C:  MOVWF  2C
+067D:  CALL   5AE
+067E:  MOVLW  20
+067F:  BTFSS  0C.4
+0680:  GOTO   67F
+0681:  MOVWF  19
+0682:  MOVLW  50
+0683:  BTFSS  0C.4
+0684:  GOTO   683
+0685:  MOVWF  19
+....................     
+....................     
+....................    
+....................     
+....................    } 
+0686:  GOTO   653
+....................  
+.................... } 
+0687:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT
