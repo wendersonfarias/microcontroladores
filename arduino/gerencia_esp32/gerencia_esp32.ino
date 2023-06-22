@@ -6,8 +6,8 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // Cria uma instância do objeto lcd para controlar o display LCD
 
-const char* ssid = "NOME_WIFI";      // Nome (SSID) da rede Wi-Fi
-const char* password = "SENHA_WIFI"; // Senha da rede Wi-Fi
+const char* ssid = "nome_wifi";      // Nome (SSID) da rede Wi-Fi
+const char* password = "senha_wifi"; // Senha da rede Wi-Fi
 const String url = "https://acessousuarioesp32-production.up.railway.app/usuarios/"; // URL base da API
 
 const byte LINHAS = 4;   // Número de linhas do teclado numérico
@@ -49,9 +49,12 @@ void setup() {
 }
 
 void loop() {
+  delay(200);
+  lcd.clear();
   lcd.print("1 cadastro");
   lcd.setCursor(0, 1);
   lcd.print("2 fazer login");
+  
 
   Serial.println("1 cadastrar usuário");
   Serial.println("2 fazer login");
@@ -64,6 +67,7 @@ void loop() {
       lcd.print("Insira a senha");
       lcd.setCursor(0, 1);
       lcd.print("de Administrador!");
+      delay(300);
 
       Serial.println("Opção 1 selecionada. Por favor, insira a senha de administrador:");
       if (verificarSenhaAdmin()) {
@@ -83,6 +87,11 @@ void loop() {
 }
 
 void cadastrarUsuario() {
+  lcd.clear();
+  lcd.print("Insira ");
+  lcd.setCursor(0, 1);
+  lcd.print("nova Matricula");
+  delay(500);
   String matricula = obterMatricula();    // Obtém a matrícula do usuário
   Serial.println("Digite a senha:");
   String senha = obterSenha();            // Obtém a senha do usuário
@@ -119,6 +128,13 @@ void cadastrarUsuario() {
 }
 
 bool verificarSenhaAdmin() {
+  lcd.clear();
+  lcd.print("Insira a senha");
+  lcd.setCursor(0, 1);
+  lcd.print("de Administrador");
+  delay(100);
+  lcd.clear();
+  lcd.print("Senha adm");
   Serial.println("Digite a senha adm #:");
   String senha = obterSenha();
 
@@ -132,6 +148,12 @@ bool verificarSenhaAdmin() {
 void fazerLogin() {
   String matricula = obterMatricula();    // Obtém a matrícula do usuário
   Serial.println("Digite a senha seguida de #:");
+  
+  
+  lcd.clear();
+  lcd.print("Informe a Senha");
+  lcd.setCursor(0, 1);
+  lcd.print("seguida de #");
   String senha = obterSenha();            // Obtém a senha do usuário
 
   Serial.print("Matrícula: ");
@@ -149,9 +171,13 @@ String obterMatricula() {
   lcd.print("seguida de #");
   Serial.println("Digite a matrícula seguida de #:");
   String matricula = "";
+   lcd.clear();
+  lcd.print("Matricula:");
+  lcd.setCursor(0, 1);
   char tecla = keypad.getKey();
   while (tecla != '#') {
     if (tecla) {
+      lcd.print(tecla);
       Serial.print(tecla);
       matricula += tecla;
     }
@@ -164,13 +190,15 @@ String obterMatricula() {
 
 String obterSenha() {
   String senha = "";
-  lcd.clear();
-  lcd.print("Informe a Senha");
+
+   lcd.clear();
+  lcd.print("Senha:");
   lcd.setCursor(0, 1);
-  lcd.print("seguida de #");
+  
   char tecla = keypad.getKey();
   while (tecla != '#') {
     if (tecla) {
+      lcd.print("*");
       Serial.print("*");
       senha += tecla;
     }
